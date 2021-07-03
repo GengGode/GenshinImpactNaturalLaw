@@ -34,6 +34,7 @@ private:
 
 	QtWidgetsMessageBox *WidgetsMessageBox = nullptr;
 	QLabel *MainMaskLabel = nullptr;
+	QScrollBar *scrBar = nullptr;
 private:
 	std::vector<QPushButton*> UIButtonList;
 	std::vector<QLabel*> ScrollLabelList;
@@ -53,6 +54,7 @@ private slots:
 	void Cancel();
 	void OK();
 	void SwitchOptions();
+	void BarMove_ChangeButton();
 
 	void ShowMessageBox();
 

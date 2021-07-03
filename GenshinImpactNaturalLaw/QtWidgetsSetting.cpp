@@ -8,6 +8,10 @@ QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 	setWindowFlags(Qt::FramelessWindowHint|Qt::SubWindow);
 
 	uiConnectButton();
+
+	scrBar = ui.scrollArea->verticalScrollBar();
+	connect(scrBar, &QScrollBar::valueChanged, this, &QtWidgetsSetting::BarMove_ChangeButton);
+
 	connect(ui.pushButton_Exit, SIGNAL(clicked()), this, SLOT(CloseSelf()));
 	connect(ui.pushButton_Cancel, SIGNAL(clicked()), this, SLOT(Cancel()));
 	connect(ui.pushButton_OK, SIGNAL(clicked()), this, SLOT(OK()));
@@ -131,12 +135,23 @@ void QtWidgetsSetting::SwitchOptions()
 	{
 		if (btn == UIButtonList[i])
 		{
-			QScrollBar *scrBar = ui.scrollArea->verticalScrollBar();
 			QPropertyAnimation *scrBarAni = new QPropertyAnimation(scrBar, "value");
+			connect(scrBarAni, &QPropertyAnimation::finished, scrBarAni, &QPropertyAnimation::deleteLater);
 			scrBarAni->setStartValue(scrBar->value());
 			scrBarAni->setEndValue(ScrollLabelList[i]->y());
 			scrBarAni->setDuration(150);
 			scrBarAni->start();
+		}
+	}
+}
+
+void QtWidgetsSetting::BarMove_ChangeButton()
+{
+	for (int i = 0; i < ScrollLabelList.size(); i++)
+	{
+		if (scrBar->value() > ScrollLabelList[i]->y()-60)
+		{
+			UIButtonList[i]->setChecked(true);
 		}
 	}
 }
