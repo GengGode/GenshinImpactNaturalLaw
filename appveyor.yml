@@ -42,7 +42,7 @@ after_build:
     - echo  %MyProjectDir%\x64\Release\%ProJectExeName%.exe
     - dir %MyProjectDir%\x64\Release\
     - dir %MyProjectDir%\x64\build\
-    - windeployqt *.exe
+    - windeployqt I�A�I�I3.exe
 
     - echo %APPVEYOR_BUILD_VERSION% >version.tag
     - 7z a %ProJectExeName%.7z %MyProjectDir%\x64\build\*
