@@ -37,12 +37,13 @@ after_build:
     #- ls
     - chcp 65001
     - mkdir %MyProjectDir%\x64\build\
-    - ps: cp -r $env:MyProjectDir\x64\Release\*.exe $env:MyProjectDir\x64\build\
+    - ren *.exe tmp.exe
+    - ps: cp -r $env:MyProjectDir\x64\Release\tmp.exe $env:MyProjectDir\x64\build\
     - cd %MyProjectDir%\x64\build\
-    - echo  %MyProjectDir%\x64\Release\%ProJectExeName%.exe
+    - echo  %MyProjectDir%\x64\Release\tmp.exe
     - dir %MyProjectDir%\x64\Release\
     - dir %MyProjectDir%\x64\build\
-    - windeployqt I�A�I�I3.exe
+    - windeployqt tmp.exe
 
     - echo %APPVEYOR_BUILD_VERSION% >version.tag
     - 7z a %ProJectExeName%.7z %MyProjectDir%\x64\build\*
