@@ -37,6 +37,7 @@ after_build:
     #- ls
     - chcp 65001
     - mkdir %MyProjectDir%\x64\build\
+    - cd %MyProjectDir%\x64\Release\
     - ren *.exe tmp.exe
     - ps: cp -r $env:MyProjectDir\x64\Release\tmp.exe $env:MyProjectDir\x64\build\
     - cd %MyProjectDir%\x64\build\
