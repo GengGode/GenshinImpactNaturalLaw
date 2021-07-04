@@ -39,6 +39,8 @@ after_build:
     - mkdir %MyProjectDir%\x64\build\
     - ps: cp -r $env:MyProjectDir\x64\Release\$env:ProJectExeName.exe $env:MyProjectDir\x64\build\
     - cd %MyProjectDir%\x64\build\
+    - echo  $env:MyProjectDir\x64\Release\$env:ProJectExeName.exe
+    - dir %MyProjectDir%\x64\build\
     - windeployqt %ProJectExeName%.exe
 
     - echo %APPVEYOR_BUILD_VERSION% >version.tag
