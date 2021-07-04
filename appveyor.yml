@@ -48,8 +48,10 @@ after_build:
     - ren tmp.exe %ProJectExeName%.exe
     
     - echo %APPVEYOR_BUILD_VERSION% >version.tag
+    - chcp 65001
+    - 7z a tmp.7z %MyProjectDir%\x64\build\*
     
-    - 7z a %ProJectExeName%.7z %MyProjectDir%\x64\build\*
+    - ren tmp.7z %ProJectExeName%.7z
     
     - appveyor PushArtifact version.tag
     - appveyor PushArtifact %ProJectExeName%.7z
