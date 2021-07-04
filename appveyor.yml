@@ -51,10 +51,10 @@ after_build:
     - chcp 65001
     - 7z a tmp.7z %MyProjectDir%\x64\build\*
     
-    - ren tmp.7z %ProJectExeName%.7z
+    - ren tmp.7z source.7z
     
     - appveyor PushArtifact version.tag
-    - appveyor PushArtifact %ProJectExeName%.7z
+    - appveyor PushArtifact source.7z
     
 deploy:
     - provider: GitHub
