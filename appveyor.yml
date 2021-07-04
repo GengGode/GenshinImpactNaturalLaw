@@ -13,7 +13,7 @@ environment:
     vs: C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\VC\Auxiliary\Build
     QTDIR: C:\Qt\5.14.2\msvc2017_64
     ProjectName: GenshinImpactNaturalLaw
-    ProJectExeName: "\E5A4A9\E79086\xE7B3BB\xE7BB9F"
+    ProJectExeName: "\xE5A4A9\xE79086\xE7B3BB\xE7BB9F"
     MyProjectDir: C:\projects\%ProjectName%
     
 skip_tags: true
