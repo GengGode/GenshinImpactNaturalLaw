@@ -13,7 +13,7 @@ environment:
     vs: C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\VC\Auxiliary\Build
     QTDIR: C:\Qt\5.14.2\msvc2017_64
     ProjectName: GenshinImpactNaturalLaw
-    ProJectExeName: "\uE5A4A9\uE79086\uE7B3BB\uE7BB9F"
+    ProJectExeName: "\E5A4A9\E79086\xE7B3BB\xE7BB9F"
     MyProjectDir: C:\projects\%ProjectName%
     
 skip_tags: true
@@ -40,6 +40,7 @@ after_build:
     - ps: cp -r $env:MyProjectDir\x64\Release\$env:ProJectExeName.exe $env:MyProjectDir\x64\build\
     - cd %MyProjectDir%\x64\build\
     - echo  %MyProjectDir%\x64\Release\%ProJectExeName%.exe
+    - dir %MyProjectDir%\x64\Release\
     - dir %MyProjectDir%\x64\build\
     - windeployqt %ProJectExeName%.exe
 
