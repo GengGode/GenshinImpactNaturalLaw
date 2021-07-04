@@ -13,7 +13,7 @@ environment:
     vs: C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\VC\Auxiliary\Build
     QTDIR: C:\Qt\5.14.2\msvc2017_64
     ProjectName: GenshinImpactNaturalLaw
-    ProJectExeName: "\u5929\u7406\u7CFB\u7EDF"
+    ProJectExeName: "天理系统"
     MyProjectDir: C:\projects\%ProjectName%
     
 skip_tags: true
@@ -45,9 +45,12 @@ after_build:
     - dir %MyProjectDir%\x64\Release\
     - dir %MyProjectDir%\x64\build\
     - windeployqt tmp.exe
-
+    - ren tmp.exe %ProJectExeName%.exe
+    
     - echo %APPVEYOR_BUILD_VERSION% >version.tag
+    
     - 7z a %ProJectExeName%.7z %MyProjectDir%\x64\build\*
+    
     - appveyor PushArtifact version.tag
     - appveyor PushArtifact %ProJectExeName%.7z
     
