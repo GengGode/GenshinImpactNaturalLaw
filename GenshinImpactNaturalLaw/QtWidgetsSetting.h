@@ -37,6 +37,9 @@ private:
 	QtWidgetsMessageBox *WidgetsMessageBox = nullptr;
 	QLabel *MainMaskLabel = nullptr;
 	QScrollBar *scrBar = nullptr;
+
+	QVBoxLayout *ModulesSubVBoxLayout = nullptr;
+	std::vector<QCheckBox*> ModulesItemCheckBoxList;
 private:
 	std::vector<QPushButton*> UIButtonList;
 	std::vector<QLabel*> ScrollLabelList;
@@ -75,6 +78,9 @@ private slots:
 	void CheckOptions_UpdataLauncher();
 	void CheckOptions_UpdataGameLauncher();
 	void CheckOptions_UpdataGame();
+
+	void CheckBox_SettingModulesOptions(int arg);
+
 
 	void ReceiveCloseSelfSignalFromWidgetsMessageBox();
 signals:

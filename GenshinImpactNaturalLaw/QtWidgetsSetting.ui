@@ -501,7 +501,7 @@ height: 0px;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-767</y>
+      <y>0</y>
       <width>561</width>
       <height>1465</height>
      </rect>
@@ -833,7 +833,8 @@ QRadioButton::indicator:checked:pressed {
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:rgb(57, 59, 64);</string>
+         <string notr="true">color:rgb(57, 59, 64);
+font-size:14;</string>
         </property>
         <property name="text">
          <string>本地文件</string>
@@ -1203,6 +1204,9 @@ color:rgb(148, 150, 153);</string>
           <height>113</height>
          </size>
         </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -1230,15 +1234,16 @@ color:rgb(148, 150, 153);</string>
          <property name="styleSheet">
           <string notr="true">background-color:rgb(246, 245, 243);</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <layout class="QVBoxLayout" name="verticalLayout_ModuleList">
-            <property name="spacing">
-             <number>12</number>
-            </property>
-           </layout>
-          </item>
-         </layout>
+         <widget class="QWidget" name="widget_ModulesRect" native="true">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>0</y>
+            <width>501</width>
+            <height>48</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </widget>
       </item>

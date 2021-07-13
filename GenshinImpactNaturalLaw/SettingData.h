@@ -3,8 +3,8 @@
 #include <QApplication>
 #include <QDir>
 #include <QSettings>
-//#include <String>
-//using namespace std;
+#include <vector>
+using namespace std;
 
 class SettingData
 {
@@ -22,10 +22,13 @@ public:
 	QString game_start_name = "YuanShen.exe";
 	QString parm_borderless = " -popupwindow";
 	bool is_first_exit = false;
+	int mods_number = 0;
+	vector<bool> is_start_mods_list;
 
 public:
 	SettingData();
 	~SettingData();
+	SettingData& operator=(const SettingData& setting);
 
 	void sync();
 

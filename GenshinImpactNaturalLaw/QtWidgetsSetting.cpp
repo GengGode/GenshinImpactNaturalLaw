@@ -116,10 +116,28 @@ void QtWidgetsSetting::UpdataModulesOptions()
 {
 	QStringList ModsName = modules->getModuleNameList();
 
+	if (ModulesSubVBoxLayout == nullptr)
+	{
+		 ModulesSubVBoxLayout = new QVBoxLayout;
+		 ModulesSubVBoxLayout->setSpacing(12);
+	}
+
+	for (int i = 0; i < ModulesItemCheckBoxList.size(); i++)
+	{
+		delete ModulesItemCheckBoxList[i];
+		ModulesItemCheckBoxList[i] = nullptr;
+	}
+	ModulesItemCheckBoxList.clear();
+
+	setting->is_start_mods_list.resize(ModsName.size(), false);
+	setting->mods_number = (int)setting->is_start_mods_list.size();
+
 	for (int i = 0; i < ModsName.size(); i++)
 	{
 		QString ModName = ModsName[i].section(".", 0, -2);
+
 		QCheckBox *newQCheckBox = new QCheckBox();
+
 		newQCheckBox->setStyleSheet(QString::fromUtf8("QCheckBox{\n"
 			"	font: 10pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
 			"	color: rgb(57, 59, 64);\n"
@@ -155,9 +173,24 @@ void QtWidgetsSetting::UpdataModulesOptions()
 			"}\n"
 			""));
 		newQCheckBox->setText(ModName);
-		ui.verticalLayout_ModuleList->addWidget(newQCheckBox);
+		newQCheckBox->setChecked(setting->is_start_mods_list[i]);
+		connect(newQCheckBox, &QCheckBox::stateChanged, this, &QtWidgetsSetting::CheckBox_SettingModulesOptions);
+
+		ModulesSubVBoxLayout->addWidget(newQCheckBox);
+
+		ModulesItemCheckBoxList.push_back(newQCheckBox);
 	}
-	ui.scrollArea_ModulesSub->show();
+
+	ui.widget_ModulesRect->setLayout(ModulesSubVBoxLayout);
+	ui.widget_ModulesRect->setFixedHeight(36 * (ModsName.size() + 1));
+	ui.widget_ModulesRect->show();
+
+	ui.scrollAreaWidgetContents_ModulesSub->setMinimumHeight(36 * (ModsName.size() + 1));
+	ui.scrollAreaWidgetContents_ModulesSub->setMaximumHeight(36 * (ModsName.size() + 1));
+	
+	QScrollBar *scrBar = ui.scrollArea_ModulesSub->verticalScrollBar();
+	scrBar->setStyleSheet("QScrollBar::handle:vertical {min-height: auto;}");
+
 }
 
 void QtWidgetsSetting::CloseSelf()
@@ -412,6 +445,26 @@ void QtWidgetsSetting::CheckOptions_UpdataGameLauncher()
 void QtWidgetsSetting::CheckOptions_UpdataGame()
 {
 
+}
+
+void QtWidgetsSetting::CheckBox_SettingModulesOptions(int arg)
+{
+	QCheckBox *cbtObj = qobject_cast<QCheckBox*>(sender());
+	for (int i = 0; i < ModulesItemCheckBoxList.size(); i++)
+	{
+		if (cbtObj == ModulesItemCheckBoxList[i])
+		{
+			if (arg == 2)
+			{
+				setting->is_start_mods_list[i] = true;
+			}
+			else if (arg == 0)
+			{
+				setting->is_start_mods_list[i] = false;
+			}
+			emit UpdataShowOptions();
+		}
+	}
 }
 
 void QtWidgetsSetting::ReceiveCloseSelfSignalFromWidgetsMessageBox()

@@ -190,28 +190,29 @@ void GenshinImpactNaturalLaw::StartGame()
 	{
 		if (setting.is_start_module)
 		{
-			QStringList commandList = modules.getModuleList();
-			bool modRes = false;
-			for (int i = 0; i < commandList.size(); i++)
+			for (int i = 0; i < setting.is_start_mods_list.size(); i++)
 			{
-				QString moduleCommand = commandList[i];
-				TCHAR modCmdLine[1024] = {};
+				QStringList commandList = modules.getModuleList();
+				bool modsRes = false;
+				if (setting.is_start_mods_list[i] == true)
+				{
+					QString moduleCommand = commandList[i];
+					TCHAR modCmdLine[1024] = {};
 
-				moduleCommand.toWCharArray(modCmdLine);
-				STARTUPINFO modSi;
-				memset(&modSi, 0, sizeof(STARTUPINFO));
-				modSi.cb = sizeof(STARTUPINFO);
-				modSi.dwFlags = STARTF_USESHOWWINDOW;
-				modSi.wShowWindow = SW_SHOW;
-				PROCESS_INFORMATION modPi;
+					moduleCommand.toWCharArray(modCmdLine);
+					STARTUPINFO modSi;
+					memset(&modSi, 0, sizeof(STARTUPINFO));
+					modSi.cb = sizeof(STARTUPINFO);
+					modSi.dwFlags = STARTF_USESHOWWINDOW;
+					modSi.wShowWindow = SW_SHOW;
+					PROCESS_INFORMATION modPi;
 
-				modRes = CreateProcess(NULL, modCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &modSi, &modPi);
+					modsRes = CreateProcess(NULL, modCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &modSi, &modPi);
+				}
 			}
 		}
-
 		this->hide();
 	}
-
 }
 void GenshinImpactNaturalLaw::OpenLinkeUrl()
 {

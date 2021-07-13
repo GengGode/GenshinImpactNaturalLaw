@@ -11,6 +11,9 @@ ModulesManager::~ModulesManager()
 
 void ModulesManager::refresh()
 {
+	ModuleFileList.clear();
+	ModuleExeList.clear();
+
 	QDir dir;
 	QString modulesPath = QApplication::applicationDirPath() + "/modules/";
 	if (!dir.exists(modulesPath)) {
