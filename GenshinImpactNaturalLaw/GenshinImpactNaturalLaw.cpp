@@ -80,6 +80,7 @@ void GenshinImpactNaturalLaw::NewWidgetsSetting()
 		connect(WidgetsSetting, SIGNAL(SendSettingToMainWidgets()), this, SLOT(ReceiveSettingFromWidgetsSetting()));
 		connect(WidgetsSetting, SIGNAL(SendCloseSelfSignalToMainWidgets()), this, SLOT(ReceiveCloseSelfSignalFromWidgetsSetting()));
 		WidgetsSetting->SetSetting(&setting);
+		WidgetsSetting->SetModules(&modules);
 
 		WidgetsSetting->setWindowModality(Qt::ApplicationModal);
 		WidgetsSetting->move(this->x()+230, this->y()+103);
@@ -177,9 +178,6 @@ void GenshinImpactNaturalLaw::StartGame()
 
 	bool res = CreateProcess(NULL, szCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
 
-
-
-
 	if (!res)
 	{
 		DWORD err = GetLastError();
@@ -190,8 +188,30 @@ void GenshinImpactNaturalLaw::StartGame()
 	}
 	else
 	{
+		if (setting.is_start_module)
+		{
+			QStringList commandList = modules.getModuleList();
+			bool modRes = false;
+			for (int i = 0; i < commandList.size(); i++)
+			{
+				QString moduleCommand = commandList[i];
+				TCHAR modCmdLine[1024] = {};
+
+				moduleCommand.toWCharArray(modCmdLine);
+				STARTUPINFO modSi;
+				memset(&modSi, 0, sizeof(STARTUPINFO));
+				modSi.cb = sizeof(STARTUPINFO);
+				modSi.dwFlags = STARTF_USESHOWWINDOW;
+				modSi.wShowWindow = SW_SHOW;
+				PROCESS_INFORMATION modPi;
+
+				modRes = CreateProcess(NULL, modCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &modSi, &modPi);
+			}
+		}
+
 		this->hide();
 	}
+
 }
 void GenshinImpactNaturalLaw::OpenLinkeUrl()
 {

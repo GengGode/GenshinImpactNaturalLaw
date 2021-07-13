@@ -9,6 +9,8 @@
 #include <QFile>
 #include <QObject>
 
+#include "VersionNumber.h"
+
 class UpdataModule :public QObject
 {
 	Q_OBJECT
@@ -47,6 +49,8 @@ private:
 	bool httpRequestAborted;
 
 	//=====对象声明=====
+	VersionNumber version;
+
 	QString FileBuff;
 	QFile *downloadFile;                //保存目标文件指针
 	QUrl downloadUrl;                   //下载地址Url

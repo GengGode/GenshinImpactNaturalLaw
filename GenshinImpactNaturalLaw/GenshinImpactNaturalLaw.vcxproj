@@ -101,10 +101,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DownloadManager.cpp" />
+    <ClCompile Include="ModulesManager.cpp" />
     <ClCompile Include="QtWidgetsMessageBox.cpp" />
     <ClCompile Include="QtWidgetsSetting.cpp" />
     <ClCompile Include="SettingData.cpp" />
     <ClCompile Include="UpdataModule.cpp" />
+    <ClCompile Include="VersionNumber.cpp" />
     <QtRcc Include="GenshinImpactNaturalLaw.qrc" />
     <QtRcc Include="QtWidgetsMessageBox.qrc" />
     <QtRcc Include="QtWidgetsSetting.qrc" />
@@ -113,12 +115,16 @@
     <ClCompile Include="GenshinImpactNaturalLaw.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="QtWidgetsMessageBox.ui" />
-    <QtUic Include="QtWidgetsSetting.ui" />
+    <QtUic Include="QtWidgetsSetting.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtWidgetsSetting.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ModulesManager.h" />
+    <ClInclude Include="VersionNumber.h" />
     <QtMoc Include="UpdataModule.h" />
     <QtMoc Include="QtWidgetsMessageBox.h" />
     <ClInclude Include="DownloadManager.h" />

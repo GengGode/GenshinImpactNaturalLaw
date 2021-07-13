@@ -9,7 +9,7 @@ QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 
 	uiConnectButton();
 
-	scrBar = ui.scrollArea->verticalScrollBar();
+	scrBar = ui.scrollArea_Main->verticalScrollBar();
 	connect(scrBar, &QScrollBar::valueChanged, this, &QtWidgetsSetting::BarMove_ChangeButton);
 
 	connect(ui.pushButton_Exit, SIGNAL(clicked()), this, SLOT(CloseSelf()));
@@ -86,11 +86,19 @@ void QtWidgetsSetting::mouseMoveEvent(QMouseEvent *event)
 	}
 	event->ignore();
 }
+
 void QtWidgetsSetting::SetSetting(SettingData *setting)
 {
 	this->setting = setting;
 
 	emit UpdataShowOptions();
+}
+
+void QtWidgetsSetting::SetModules(ModulesManager *modules)
+{
+	this->modules = modules;
+
+	emit UpdataModulesOptions();
 }
 
 void QtWidgetsSetting::UpdataShowOptions()
@@ -102,6 +110,54 @@ void QtWidgetsSetting::UpdataShowOptions()
 	ui.radioButton_Setting_1->setChecked(!setting->is_exit_ismini);
 	ui.lineEdit_Path_1->setText(setting->launcher_install_path.replace(QRegExp("/"), "\\"));
 	ui.lineEdit_Path_2->setText(setting->game_install_path.replace(QRegExp("/"), "\\"));
+}
+
+void QtWidgetsSetting::UpdataModulesOptions()
+{
+	QStringList ModsName = modules->getModuleNameList();
+
+	for (int i = 0; i < ModsName.size(); i++)
+	{
+		QString ModName = ModsName[i].section(".", 0, -2);
+		QCheckBox *newQCheckBox = new QCheckBox();
+		newQCheckBox->setStyleSheet(QString::fromUtf8("QCheckBox{\n"
+			"	font: 10pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";\n"
+			"	color: rgb(57, 59, 64);\n"
+			"	spacing: 10px;\n"
+			"}\n"
+			"QCheckBox::indicator {\n"
+			"	width: 24px;\n"
+			"	height: 24px;\n"
+			"}\n"
+			"QCheckBox::indicator:unchecked {\n"
+			"    image: url(:/CheckBox/resource/QtWidgetsSetting/CheckBox/checkbox_unchecked.png);\n"
+			"}\n"
+			"\n"
+			"QCheckBox::indicator:unchecked:hover {\n"
+			"    image: url(:/CheckBox/resource/QtWidgetsSetting/CheckBox/checkbox_unchecked_hover.png);\n"
+			"}\n"
+			"\n"
+			"QCheckBox::indicator:unchecked:pressed {\n"
+			"    image: url(:/CheckBox/resource/QtWidgetsSetting/CheckBox/checkbox_unchecked_pressed.png);\n"
+			"}\n"
+			"\n"
+			"QCheckBox::indicator:checked {\n"
+			"    image: url(:/CheckBox/resource/QtWidgetsSetting/CheckBox/checkbox_checked.png);\n"
+			"}\n"
+			"\n"
+			"QCheckBox::indicator:checked:hover {\n"
+			"    image: url(:/CheckBox/resource/QtWidgetsSetting/CheckBox/checkbox_checked_hover.png);\n"
+			"}\n"
+			"\n"
+			"QCheckBox::indicator:checked:pressed {\n"
+			"    image: url(:/CheckBox/resource/QtWidgetsSettin"
+			"g/CheckBox/checkbox_checked_pressed.png);\n"
+			"}\n"
+			""));
+		newQCheckBox->setText(ModName);
+		ui.verticalLayout_ModuleList->addWidget(newQCheckBox);
+	}
+	ui.scrollArea_ModulesSub->show();
 }
 
 void QtWidgetsSetting::CloseSelf()
@@ -336,7 +392,9 @@ void QtWidgetsSetting::CheckOptions_CheckModule()
 
 void QtWidgetsSetting::CheckOptions_RefreshModule()
 {
+	modules->refresh();
 
+	emit UpdataModulesOptions();
 }
 
 void QtWidgetsSetting::CheckOptions_UpdataLauncher()

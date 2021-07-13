@@ -14,6 +14,7 @@
 #include "ui_GenshinImpactNaturalLaw.h"
 #include "QtWidgetsSetting.h"
 #include "SettingData.h"
+#include "ModulesManager.h"
 
 class GenshinImpactNaturalLaw : public QMainWindow
 {
@@ -28,7 +29,7 @@ private:
 
 private:
 	SettingData setting;
-
+	ModulesManager modules;
 private:
 	QPoint m_Press;
 	QPoint m_Move;

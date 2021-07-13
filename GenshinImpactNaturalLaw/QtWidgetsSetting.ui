@@ -380,7 +380,7 @@ color:rgb(57, 59, 63);
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QScrollArea" name="scrollArea">
+  <widget class="QScrollArea" name="scrollArea_Main">
    <property name="geometry">
     <rect>
      <x>246</x>
@@ -501,7 +501,7 @@ height: 0px;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-630</y>
+      <y>-767</y>
       <width>561</width>
       <height>1465</height>
      </rect>
@@ -517,16 +517,16 @@ height: 0px;
 background-color:rgb(255, 255, 255);
 }</string>
     </property>
-    <widget class="QWidget" name="verticalLayoutWidget_2">
+    <widget class="QWidget" name="verticalLayoutWidget_Main">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>536</width>
+       <width>530</width>
        <height>1462</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout_Main">
       <property name="spacing">
        <number>12</number>
       </property>
@@ -902,7 +902,7 @@ color:rgb(148, 150, 153);</string>
        </widget>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_Path_1">
         <item>
          <widget class="QLineEdit" name="lineEdit_Path_1">
           <property name="enabled">
@@ -1005,7 +1005,7 @@ color:rgb(148, 150, 153);</string>
        </widget>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
+       <layout class="QVBoxLayout" name="verticalLayout_Path_2">
         <item>
          <widget class="QLineEdit" name="lineEdit_Path_2">
           <property name="minimumSize">
@@ -1113,7 +1113,7 @@ color:rgb(148, 150, 153);</string>
        </widget>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_Path_3">
         <item>
          <widget class="QLineEdit" name="lineEdit_Path_3">
           <property name="minimumSize">
@@ -1196,16 +1196,22 @@ color:rgb(148, 150, 153);</string>
        </widget>
       </item>
       <item>
-       <widget class="QScrollArea" name="scrollArea_2">
+       <widget class="QScrollArea" name="scrollArea_ModulesSub">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>113</height>
+         </size>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+        <widget class="QWidget" name="scrollAreaWidgetContents_ModulesSub">
          <property name="geometry">
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>528</width>
+           <width>522</width>
            <height>200</height>
           </rect>
          </property>
@@ -1215,21 +1221,24 @@ color:rgb(148, 150, 153);</string>
            <height>200</height>
           </size>
          </property>
-         <widget class="QWidget" name="verticalLayoutWidget">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>10</y>
-            <width>532</width>
-            <height>117</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QTableView" name="tableView"/>
-           </item>
-          </layout>
-         </widget>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>113</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(246, 245, 243);</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_ModuleList">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
@@ -1507,7 +1516,7 @@ color:rgb(148, 150, 153);</string>
   <zorder>TitleLabelRect</zorder>
   <zorder>pushButton_UI_ModuleResource</zorder>
   <zorder>pushButton_UI_VersionInformation</zorder>
-  <zorder>scrollArea</zorder>
+  <zorder>scrollArea_Main</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

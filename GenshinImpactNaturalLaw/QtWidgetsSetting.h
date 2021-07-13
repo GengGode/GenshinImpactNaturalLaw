@@ -12,6 +12,7 @@
 #include "QtWidgetsMessageBox.h"
 #include "SettingData.h"
 #include "UpdataModule.h"
+#include "ModulesManager.h"
 
 class QtWidgetsSetting : public QWidget
 {
@@ -26,6 +27,7 @@ private:
 
 public:
 	SettingData *setting = nullptr;
+	ModulesManager *modules = nullptr;
 	UpdataModule updata;
 private:
 	QPoint m_Press;
@@ -47,7 +49,9 @@ private:
 
 public slots:
 	void SetSetting(SettingData *setting);
+	void SetModules(ModulesManager *modules);
 	void UpdataShowOptions();
+	void UpdataModulesOptions();
 
 private slots:
 	void CloseSelf();

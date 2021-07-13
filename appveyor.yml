@@ -13,7 +13,7 @@ environment:
     vs: C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\VC\Auxiliary\Build
     QTDIR: C:\Qt\5.14.2\msvc2017_64
     ProjectName: GenshinImpactNaturalLaw
-    ProJectExeName: "天理系统"
+    ProJectExeName: 天理系统
     MyProjectDir: C:\projects\%ProjectName%
     
 skip_tags: true
@@ -33,9 +33,7 @@ build_script:
     - nmake
     
 after_build:
-    # copy include and source code files
-    #- ls
-    - chcp 65001
+    # copy include and source code files\
     - mkdir %MyProjectDir%\x64\build\
     - cd %MyProjectDir%\x64\Release\
     - ren *.exe tmp.exe
