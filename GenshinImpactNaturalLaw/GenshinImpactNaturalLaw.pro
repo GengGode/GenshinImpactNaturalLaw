@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 QT += widgets network
 TEMPLATE = app
-TARGET = 天理系统
+TARGET = \345\244\251\347\220\206\347\263\273\347\273\237
 DESTDIR = ../x64/Release
 CONFIG += release
 LIBS += -L"."

@@ -501,7 +501,7 @@ height: 0px;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-975</y>
       <width>561</width>
       <height>1465</height>
      </rect>
@@ -1327,7 +1327,7 @@ background-color:rgb(236, 233, 224);
 color:rgb(148, 150, 153);</string>
         </property>
         <property name="text">
-         <string>当前版本：</string>
+         <string>当前版本：天理系统</string>
         </property>
        </widget>
       </item>
