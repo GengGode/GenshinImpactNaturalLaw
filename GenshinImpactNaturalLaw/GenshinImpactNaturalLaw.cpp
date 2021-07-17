@@ -34,6 +34,13 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	Shadow_LabelPage->setOffset(0.0);
 	ui.label_Page_Rect->setGraphicsEffect(Shadow_LabelPage);
 
+	setAttribute(Qt::WA_TranslucentBackground, true);  // ±³¾°Í¸Ã÷
+    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
+    shadow->setOffset(0, 0);
+    shadow->setColor(QColor(15, 15, 15, 50));
+    shadow->setBlurRadius(15);
+    ui.MainBackgroundImageRect->setGraphicsEffect(shadow);
+
 	connect(ui.pushButton_TitleSet, SIGNAL(clicked()), this, SLOT(NewWidgetsSetting()));
 	connect(ui.pushButton_TitleExit, SIGNAL(clicked()), this, SLOT(CloseEvent()));
 	connect(ui.pushButton_StartGame, SIGNAL(clicked()), this, SLOT(StartGame()));
