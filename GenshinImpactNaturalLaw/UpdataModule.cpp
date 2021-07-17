@@ -23,8 +23,8 @@ void UpdataModule::setData(QUrl url, QString pathtoSave)
 	if (!dir.exists(filePath)) {
 		dir.mkpath(filePath);
 	}
-
-	savePath = filePath + downloadUrl.fileName();
+	fileName= downloadUrl.fileName();
+	savePath = filePath + fileName;
 }
 
 void UpdataModule::getFile()
@@ -137,15 +137,23 @@ void UpdataModule::downloadFinished()
 		delete downloadFile;
 		downloadFile = 0;
 		bisFinished = true;
+
+		QString line;
+		QFile readVer(savePath);
+		if (!readVer.open(QIODevice::ReadOnly | QIODevice::Text))
+		{
+
+		}
+		else
+		{
+			line = readVer.readLine();
+		}
+
 		emit downloadResult(0);
 	}
+
 	downloadReply->deleteLater();
 	downloadReply = 0;
-	if (downloadFile)
-	{
-		delete downloadFile;
-		downloadFile = 0;
-	}
 }
 
 void UpdataModule::downloadError(QNetworkReply::NetworkError errorCode)

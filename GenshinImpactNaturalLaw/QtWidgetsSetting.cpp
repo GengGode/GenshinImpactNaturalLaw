@@ -435,6 +435,7 @@ void QtWidgetsSetting::CheckOptions_UpdataLauncher()
 	updata.setData(QUrl("https://github.com/GengGode/GenshinImpact_AutoTrack_DLL/releases/latest/download/version.tag"), "123");
 	//updata.setData(QUrl("https://github.com/GengGode/GenshinImpact_AutoTrack_DLL/releases/latest/download/cvAutoTrack.7z"), "123");
 	updata.getFile();
+	
 }
 
 void QtWidgetsSetting::CheckOptions_UpdataGameLauncher()
