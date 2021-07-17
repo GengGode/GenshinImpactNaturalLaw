@@ -34,6 +34,13 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	Shadow_LabelPage->setOffset(0.0);
 	ui.label_Page_Rect->setGraphicsEffect(Shadow_LabelPage);
 
+	setAttribute(Qt::WA_TranslucentBackground, true);  // ±³¾°Í¸Ã÷
+	QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
+	shadow->setOffset(0, 0);
+	shadow->setColor(QColor(15, 15, 15, 50));
+	shadow->setBlurRadius(15);
+	ui.MainBackgroundImageRect->setGraphicsEffect(shadow);
+
 	connect(ui.pushButton_TitleSet, SIGNAL(clicked()), this, SLOT(NewWidgetsSetting()));
 	connect(ui.pushButton_TitleExit, SIGNAL(clicked()), this, SLOT(CloseEvent()));
 	connect(ui.pushButton_StartGame, SIGNAL(clicked()), this, SLOT(StartGame()));
@@ -47,7 +54,7 @@ GenshinImpactNaturalLaw::~GenshinImpactNaturalLaw()
 void GenshinImpactNaturalLaw::mousePressEvent(QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton &&
-		ui.TitleLabelRect->frameRect().contains(event->globalPos() - this->frameGeometry().topLeft())) {
+		ui.TitleLabelRect->frameRect().contains(event->globalPos() - (this->frameGeometry().topLeft() + QPoint(10, 10)))) {
 		m_Press = event->globalPos();
 		leftBtnClk = true;
 	}
@@ -83,19 +90,19 @@ void GenshinImpactNaturalLaw::NewWidgetsSetting()
 		WidgetsSetting->SetModules(&modules);
 
 		WidgetsSetting->setWindowModality(Qt::ApplicationModal);
-		WidgetsSetting->move(this->x()+230, this->y()+103);
+		WidgetsSetting->move(this->x()+240, this->y()+113);
 		WidgetsSetting->show();
 	}
 	else
 	{
-		WidgetsSetting->move(this->x() + 230, this->y() + 103);
+		WidgetsSetting->move(this->x() + 240, this->y() + 113);
 		WidgetsSetting->show();
 	}
 	if (MainMaskLabel == nullptr)
 	{
 		MainMaskLabel = new QLabel(this);
 		MainMaskLabel->setText("");
-		MainMaskLabel->setGeometry(QRect(0, 0, 1280, 730));
+		MainMaskLabel->setGeometry(QRect(10, 10, 1280, 730));
 		MainMaskLabel->setStyleSheet("background-color:rgba(0, 0, 0, 120);");
 		MainMaskLabel->show();
 	}
