@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>730</height>
+    <width>1300</width>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,8 +24,8 @@
    <widget class="QLabel" name="MainBackgroundImageRect">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>1280</width>
       <height>730</height>
      </rect>
@@ -46,8 +46,8 @@
    <widget class="QLabel" name="TitleLabelRect">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>1280</width>
       <height>30</height>
      </rect>
@@ -63,8 +63,8 @@ color:rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="pushButton_StartGame">
     <property name="geometry">
      <rect>
-      <x>916</x>
-      <y>626</y>
+      <x>926</x>
+      <y>636</y>
       <width>238</width>
       <height>64</height>
      </rect>
@@ -99,8 +99,8 @@ background-color:rgb(255, 204, 33);
    <widget class="QPushButton" name="pushButton_TitleMin">
     <property name="geometry">
      <rect>
-      <x>1211</x>
-      <y>0</y>
+      <x>1221</x>
+      <y>10</y>
       <width>30</width>
       <height>30</height>
      </rect>
@@ -125,8 +125,8 @@ background-image:url(:/TitleButtonImage/resource/titlebutton/bmin1.png)
    <widget class="QPushButton" name="pushButton_TitleSet">
     <property name="geometry">
      <rect>
-      <x>1172</x>
-      <y>0</y>
+      <x>1182</x>
+      <y>10</y>
       <width>30</width>
       <height>30</height>
      </rect>
@@ -151,8 +151,8 @@ background-image:url(:/TitleButtonImage/resource/titlebutton/bset1.png)
    <widget class="QPushButton" name="pushButton_TitleExit">
     <property name="geometry">
      <rect>
-      <x>1250</x>
-      <y>0</y>
+      <x>1260</x>
+      <y>10</y>
       <width>30</width>
       <height>30</height>
      </rect>
@@ -177,8 +177,8 @@ background-image:url(:/TitleButtonImage/resource/titlebutton/bexit1.png)
    <widget class="QLabel" name="GrayBackGround_Right_Rect">
     <property name="geometry">
      <rect>
-      <x>1204</x>
-      <y>30</y>
+      <x>1214</x>
+      <y>40</y>
       <width>76</width>
       <height>700</height>
      </rect>
@@ -193,8 +193,8 @@ background-image:url(:/TitleButtonImage/resource/titlebutton/bexit1.png)
    <widget class="QPushButton" name="pushButton_Linke_1">
     <property name="geometry">
      <rect>
-      <x>1222</x>
-      <y>66</y>
+      <x>1232</x>
+      <y>76</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -224,8 +224,8 @@ border:2px solid rgb(255, 210, 132);
    <widget class="QPushButton" name="pushButton_Linke_2">
     <property name="geometry">
      <rect>
-      <x>1222</x>
-      <y>136</y>
+      <x>1232</x>
+      <y>146</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -255,8 +255,8 @@ border:2px solid rgb(255, 210, 132);
    <widget class="QPushButton" name="pushButton_Linke_3">
     <property name="geometry">
      <rect>
-      <x>1222</x>
-      <y>206</y>
+      <x>1232</x>
+      <y>216</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -286,8 +286,8 @@ border:2px solid rgb(255, 210, 132);
    <widget class="QPushButton" name="pushButton_Linke_4">
     <property name="geometry">
      <rect>
-      <x>1222</x>
-      <y>276</y>
+      <x>1232</x>
+      <y>286</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -316,8 +316,8 @@ border:2px solid rgb(255, 210, 132);
    <widget class="QPushButton" name="pushButton_Linke_5">
     <property name="geometry">
      <rect>
-      <x>1222</x>
-      <y>346</y>
+      <x>1232</x>
+      <y>356</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -347,8 +347,8 @@ border:2px solid rgb(255, 210, 132);
    <widget class="QLabel" name="label_Page_Rect">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>234</y>
+      <x>70</x>
+      <y>244</y>
       <width>460</width>
       <height>213</height>
      </rect>
@@ -373,8 +373,8 @@ color:rgb(255, 255, 255);
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>463</y>
+      <x>70</x>
+      <y>473</y>
       <width>460</width>
       <height>120</height>
      </rect>
@@ -668,8 +668,8 @@ color:rgb(255, 210, 132);
    <widget class="QLabel" name="GrayBackGround_TabPage_Rect">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>463</y>
+      <x>70</x>
+      <y>473</y>
       <width>460</width>
       <height>120</height>
      </rect>
@@ -687,8 +687,8 @@ color:rgb(255, 210, 132);
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>61</x>
-      <y>235</y>
+      <x>71</x>
+      <y>245</y>
       <width>458</width>
       <height>211</height>
      </rect>
@@ -709,8 +709,8 @@ background-image:url(:/page/resource/page/page1.png);</string>
    <widget class="QPushButton" name="pushButton_Linke_6">
     <property name="geometry">
      <rect>
-      <x>1222</x>
-      <y>416</y>
+      <x>1232</x>
+      <y>426</y>
       <width>40</width>
       <height>40</height>
      </rect>
