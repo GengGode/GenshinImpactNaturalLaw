@@ -22,6 +22,7 @@ before_build:
     #- set PATH=%PATH%;%QTDIR%\bin;
     #- set vcvarsall=%vs%\vcvarsall.bat
     #- call "%vcvarsall%" x64
+    - echo %LANG%
     - set PATH=%PATH%;%QTDIR%\bin;
     - call %QTDIR%\bin\qtenv2.bat
     - call %vs%\vcvars64.bat x64
