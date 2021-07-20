@@ -109,6 +109,7 @@ void GenshinImpactNaturalLaw::NewWidgetsSetting()
 		MainMaskLabel->setGeometry(QRect(10, 10, 1280, 730));
 		MainMaskLabel->setStyleSheet("background-color:rgba(0, 0, 0, 120);");
 		MainMaskLabel->show();
+
 	}
 	else
 	{
@@ -291,25 +292,34 @@ void GenshinImpactNaturalLaw::ReceiveCloseSelfSignalFromWidgetsSetting()
 }
 
 void GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg()
-{	//w.raise();
-		//w.activateWindow();
-		//设置窗口位置
-		//还原显示窗口
-		//ShowWindow((HWND)w.winId(), SW_RESTORE);
-		//设置原神窗口为前台
-		//SetForegroundWindow((HWND)w.winId());
-	//this->show();
-	
-	SetWindowPos((HWND)winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
-	SetWindowPos((HWND)winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE| SWP_NOMOVE | SWP_SHOWWINDOW);
-	
-	//Qt::WindowStates winStatus = Qt::WindowNoState;
-	//if (this->windowState() & Qt::WindowMaximized) {
-	//	winStatus = Qt::WindowMaximized;
-	//}
-	//this->setWindowState(Qt::WindowMinimized);
-	//this->setWindowState(Qt::WindowActive | winStatus);
-	//this->setGeometry(this->geometry());
-	//this->activateWindow();
-	//this->raise();
+{
+	//还原显示窗口
+
+	this->show();
+
+	Qt::WindowStates winStatus = Qt::WindowNoState;
+	if (this->windowState() & Qt::WindowMaximized) {
+		winStatus = Qt::WindowMaximized;
+	}
+	this->setWindowState(Qt::WindowMinimized);
+	this->setWindowState(Qt::WindowActive | winStatus);
+	this->setGeometry(this->geometry());
+	this->activateWindow();
+	this->raise();
+
+	if (MainMaskLabel->isVisible())
+	{
+		WidgetsSetting->show();
+
+		winStatus = Qt::WindowNoState;
+		if (WidgetsSetting->windowState() & Qt::WindowMaximized) {
+			winStatus = Qt::WindowMaximized;
+		}
+		WidgetsSetting->setWindowState(Qt::WindowMinimized);
+		WidgetsSetting->setWindowState(Qt::WindowActive | winStatus);
+		WidgetsSetting->setGeometry(WidgetsSetting->geometry());
+		WidgetsSetting->activateWindow();
+		WidgetsSetting->raise();
+	}
+
 }
