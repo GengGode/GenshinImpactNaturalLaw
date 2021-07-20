@@ -13,7 +13,8 @@ MOC_DIR += .
 OBJECTS_DIR += release
 UI_DIR += .
 RCC_DIR += .
-HEADERS += ./ModulesManager.h \
+HEADERS += ./SingleApplication.h\
+	./ModulesManager.h \
     ./VersionNumber.h \
     ./DownloadManager.h \
     ./resource.h \
@@ -22,7 +23,8 @@ HEADERS += ./ModulesManager.h \
     ./QtWidgetsSetting.h \
     ./UpdataModule.h \
     ./QtWidgetsMessageBox.h
-SOURCES += ./DownloadManager.cpp \
+SOURCES += ./SingleApplication.cpp\
+	./DownloadManager.cpp \
     ./ModulesManager.cpp \
     ./QtWidgetsMessageBox.cpp \
     ./QtWidgetsSetting.cpp \
