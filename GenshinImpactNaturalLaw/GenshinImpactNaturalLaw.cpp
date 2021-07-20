@@ -42,9 +42,6 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	shadow->setBlurRadius(15);
 	ui.MainBackgroundImageRect->setGraphicsEffect(shadow);
 
-
-
-
 	connect(ui.pushButton_TitleSet, SIGNAL(clicked()), this, SLOT(NewWidgetsSetting()));
 	connect(ui.pushButton_TitleExit, SIGNAL(clicked()), this, SLOT(CloseEvent()));
 	connect(ui.pushButton_StartGame, SIGNAL(clicked()), this, SLOT(StartGame()));
@@ -174,7 +171,7 @@ void GenshinImpactNaturalLaw::uiShowImage()
 		return;
 	}
 	BackgroundImage.load(ImagePath);
-	BackgroundImage=BackgroundImage.scaled(ui.MainBackgroundImageRect->width(), ui.MainBackgroundImageRect->height());
+	BackgroundImage= BackgroundImage.scaled(ui.MainBackgroundImageRect->width(), ui.MainBackgroundImageRect->height());
 	ui.MainBackgroundImageRect->setPixmap(BackgroundImage);
 }
 
@@ -307,19 +304,19 @@ void GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg()
 	this->activateWindow();
 	this->raise();
 
-	if (MainMaskLabel->isVisible())
+	if (MainMaskLabel && MainMaskLabel->isVisible())
 	{
 		WidgetsSetting->show();
 
-		winStatus = Qt::WindowNoState;
-		if (WidgetsSetting->windowState() & Qt::WindowMaximized) {
-			winStatus = Qt::WindowMaximized;
-		}
-		WidgetsSetting->setWindowState(Qt::WindowMinimized);
-		WidgetsSetting->setWindowState(Qt::WindowActive | winStatus);
-		WidgetsSetting->setGeometry(WidgetsSetting->geometry());
-		WidgetsSetting->activateWindow();
-		WidgetsSetting->raise();
+		//winStatus = Qt::WindowNoState;
+		//if (WidgetsSetting->windowState() & Qt::WindowMaximized) {
+		//	winStatus = Qt::WindowMaximized;
+		//}
+		//WidgetsSetting->setWindowState(Qt::WindowMinimized);
+		//WidgetsSetting->setWindowState(Qt::WindowActive | winStatus);
+		//WidgetsSetting->setGeometry(WidgetsSetting->geometry());
+		//WidgetsSetting->activateWindow();
+		//WidgetsSetting->raise();
 	}
 
 }
