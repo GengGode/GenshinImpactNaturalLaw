@@ -298,6 +298,18 @@ void GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg()
 		//ShowWindow((HWND)w.winId(), SW_RESTORE);
 		//设置原神窗口为前台
 		//SetForegroundWindow((HWND)w.winId());
-	SetWindowPos((HWND)winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE);
-
+	//this->show();
+	
+	SetWindowPos((HWND)winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
+	SetWindowPos((HWND)winId(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE| SWP_NOMOVE | SWP_SHOWWINDOW);
+	
+	//Qt::WindowStates winStatus = Qt::WindowNoState;
+	//if (this->windowState() & Qt::WindowMaximized) {
+	//	winStatus = Qt::WindowMaximized;
+	//}
+	//this->setWindowState(Qt::WindowMinimized);
+	//this->setWindowState(Qt::WindowActive | winStatus);
+	//this->setGeometry(this->geometry());
+	//this->activateWindow();
+	//this->raise();
 }

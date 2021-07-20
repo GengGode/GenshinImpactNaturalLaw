@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     //QApplication a(argc, argv);
 
-	SingleApplication a(argc, argv, true);
+	SingleApplication a(argc, argv, "TianLi Launcher UniqueKey");
 	if (a.isRunning())
 	{
 		a.sendMessage("TianLi Launcher Is Running");
@@ -15,8 +15,7 @@ int main(int argc, char *argv[])
 
 	GenshinImpactNaturalLaw w;
 
-	QObject::connect(&a, &SingleApplication::receiveMessage, &w, &GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg);
-
+	QObject::connect(&a, &SingleApplication::messageAvailable, &w, &GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg);
 
     w.show();
     return a.exec();
