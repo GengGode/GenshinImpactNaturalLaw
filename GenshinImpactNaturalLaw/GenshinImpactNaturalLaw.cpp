@@ -289,3 +289,15 @@ void GenshinImpactNaturalLaw::ReceiveCloseSelfSignalFromWidgetsSetting()
 {
 	MainMaskLabel->hide();
 }
+
+void GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg()
+{	//w.raise();
+		//w.activateWindow();
+		//设置窗口位置
+		//还原显示窗口
+		//ShowWindow((HWND)w.winId(), SW_RESTORE);
+		//设置原神窗口为前台
+		//SetForegroundWindow((HWND)w.winId());
+	SetWindowPos((HWND)winId(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE);
+
+}

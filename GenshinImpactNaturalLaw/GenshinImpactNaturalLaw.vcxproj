@@ -105,6 +105,8 @@
     <ClCompile Include="QtWidgetsMessageBox.cpp" />
     <ClCompile Include="QtWidgetsSetting.cpp" />
     <ClCompile Include="SettingData.cpp" />
+    <ClCompile Include="SingleApplication.cpp" />
+    <ClCompile Include="SingleApplicationPrivate.cpp" />
     <ClCompile Include="UpdataModule.cpp" />
     <ClCompile Include="VersionNumber.cpp" />
     <QtRcc Include="GenshinImpactNaturalLaw.qrc" />
@@ -124,6 +126,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ModulesManager.h" />
+    <QtMoc Include="SingleApplication.h" />
+    <QtMoc Include="SingleApplicationPrivate.h" />
     <ClInclude Include="VersionNumber.h" />
     <QtMoc Include="UpdataModule.h" />
     <QtMoc Include="QtWidgetsMessageBox.h" />

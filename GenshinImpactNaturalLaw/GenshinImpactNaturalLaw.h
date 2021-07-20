@@ -68,5 +68,7 @@ private slots:
 	// Receive Setting From WidgetsSetting
 	void ReceiveSettingFromWidgetsSetting();
 	void ReceiveCloseSelfSignalFromWidgetsSetting();
+public slots:
+	void ReceiveUniqueKeyMsg();
 // signals:
 };

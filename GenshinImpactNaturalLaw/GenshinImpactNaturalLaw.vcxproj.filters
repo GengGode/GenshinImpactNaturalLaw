@@ -67,6 +67,12 @@
     <ClCompile Include="ModulesManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SingleApplication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleApplicationPrivate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtWidgetsSetting.h">
@@ -76,6 +82,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="UpdataModule.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SingleApplication.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SingleApplicationPrivate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
