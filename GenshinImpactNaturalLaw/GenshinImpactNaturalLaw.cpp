@@ -9,6 +9,7 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	
 	uiConnectButton();
 	uiConnectButtonLabel();
+	uiShowImage();
 
 	Tray = new QSystemTrayIcon(this);
 	Tray->setIcon(QIcon(QPixmap(":/icon/resource/icon/ICON.png")));
@@ -40,6 +41,9 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	shadow->setColor(QColor(15, 15, 15, 50));
 	shadow->setBlurRadius(15);
 	ui.MainBackgroundImageRect->setGraphicsEffect(shadow);
+
+
+
 
 	connect(ui.pushButton_TitleSet, SIGNAL(clicked()), this, SLOT(NewWidgetsSetting()));
 	connect(ui.pushButton_TitleExit, SIGNAL(clicked()), this, SLOT(CloseEvent()));
@@ -158,6 +162,21 @@ void GenshinImpactNaturalLaw::uiConnectButtonLabel()
 		connect(LinkeButtonLabelList[i], SIGNAL(clicked()), this, SLOT(OpenButtonLabelLinkeUrl()));
 	}
 }
+
+void GenshinImpactNaturalLaw::uiShowImage()
+{
+	QPixmap BackgroundImage;
+	QString ImagePath = QApplication::applicationDirPath()+"/background/" + setting.game_dynamic_bg_name;
+	QFileInfo file(ImagePath);
+	if (file.exists() == false)
+	{
+		return;
+	}
+	BackgroundImage.load(ImagePath);
+	BackgroundImage=BackgroundImage.scaled(ui.MainBackgroundImageRect->width(), ui.MainBackgroundImageRect->height());
+	ui.MainBackgroundImageRect->setPixmap(BackgroundImage);
+}
+
 void GenshinImpactNaturalLaw::CloseEvent()
 {
 	if (setting.is_exit_ismini)

@@ -3,6 +3,7 @@
 #include <QUrl>
 #include <QFileInfo>
 #include <QFileDialog>
+#include <QApplication>
 #include <QPropertyAnimation>
 #include <QScrollBar>
 #include <QScrollArea>

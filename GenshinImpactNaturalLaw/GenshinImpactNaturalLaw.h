@@ -50,6 +50,7 @@ private:
 private:
 	void uiConnectButton();
 	void uiConnectButtonLabel();
+	void uiShowImage();
 private:
 	void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 	void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
