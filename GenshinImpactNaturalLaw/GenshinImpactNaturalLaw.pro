@@ -6,6 +6,7 @@ QT += widgets network
 TEMPLATE = app
 TARGET = TianLi_Launcher
 RC_ICONS = MainIcon.ico
+RC_FILE = GenshinImpactNaturalLawIcon.rc
 DESTDIR = ../x64/Release
 CONFIG += release
 LIBS += -L"."
