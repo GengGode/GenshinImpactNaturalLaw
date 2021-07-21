@@ -4,7 +4,7 @@
 
 QT += widgets network
 TEMPLATE = app
-TARGET = 天理系统
+TARGET = TianLi_Launcher
 DESTDIR = ../x64/Release
 CONFIG += release
 LIBS += -L"."
