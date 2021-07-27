@@ -52,6 +52,11 @@
       <height>30</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color:rgb(20, 20, 20);
 color:rgb(255, 255, 255);</string>
@@ -428,7 +433,7 @@ QTabWidget::tab-bar {
 </string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <property name="styleSheet">
@@ -550,7 +555,7 @@ color:rgb(255, 210, 132);
 }</string>
          </property>
          <property name="text">
-          <string>模组功能尚未实现，不必尝试</string>
+          <string>勾选即可，目前只集成了天理地图，会与游戏一同启动</string>
          </property>
         </widget>
        </item>
@@ -657,7 +662,7 @@ color:rgb(255, 210, 132);
 }</string>
          </property>
          <property name="text">
-          <string>侵删，emmm，开源代码，大家可以自己编译</string>
+          <string>主页以及一些说明，可能会在这里放文档</string>
          </property>
         </widget>
        </item>
@@ -700,7 +705,7 @@ color:rgb(255, 210, 132);
      <string notr="true">
 border:0px solid rgb(248, 250, 251);
 border-radius:0px;
-background-image:url(:/page/resource/page/page1.png);</string>
+background-image:url(:/page/resource/page/page2.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -737,6 +742,28 @@ border:2px solid rgb(255, 210, 132);
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="TitleLabelVersion">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>50</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(67, 67, 67);
+font-size:12;</string>
+    </property>
+    <property name="text">
+     <string>2.0.0</string>
+    </property>
+   </widget>
    <zorder>MainBackgroundImageRect</zorder>
    <zorder>TitleLabelRect</zorder>
    <zorder>pushButton_StartGame</zorder>
@@ -754,6 +781,7 @@ border:2px solid rgb(255, 210, 132);
    <zorder>tabWidget</zorder>
    <zorder>pushButton</zorder>
    <zorder>pushButton_Linke_6</zorder>
+   <zorder>TitleLabelVersion</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

@@ -127,7 +127,7 @@ void GenshinImpactNaturalLaw::uiConnectButton()
 	LinkeButtonUrlList.push_back(QUrl(QLatin1String("https://space.bilibili.com/135774602")));
 	LinkeButtonUrlList.push_back(QUrl(QLatin1String("https://qm.qq.com/cgi-bin/qm/qr?k=3bd3tolWoA9vX-AdYzo-ynX_zUUB18oX&jump_from=webapi")));
 	LinkeButtonUrlList.push_back(QUrl(QLatin1String("https://github.com/GengGode/GenshinImpact_AutoMap")));
-	LinkeButtonUrlList.push_back(QUrl(QLatin1String("")));
+	LinkeButtonUrlList.push_back(QUrl(QLatin1String("https://afdian.net/album/e1386f12ecb711eb8d6c52540025c377")));
 	LinkeButtonUrlList.push_back(QUrl(QLatin1String("https://yuanshen.site/")));
 	LinkeButtonUrlList.push_back(QUrl(QLatin1String("https://mitay.net/cdkey/")));
 
@@ -153,7 +153,7 @@ void GenshinImpactNaturalLaw::uiConnectButtonLabel()
 	LinkeButtonLabelUrlList.push_back(QUrl(QLatin1String("")));
 	LinkeButtonLabelUrlList.push_back(QUrl(QLatin1String("")));
 	LinkeButtonLabelUrlList.push_back(QUrl(QLatin1String("")));
-	LinkeButtonLabelUrlList.push_back(QUrl(QLatin1String("")));
+	LinkeButtonLabelUrlList.push_back(QUrl(QLatin1String("https://yuanshen.weixitianlizhi.ren/")));
 
 	for (int i = 0; i < LinkeButtonLabelList.size(); i++)
 	{
@@ -286,6 +286,20 @@ void GenshinImpactNaturalLaw::ReceiveSettingFromWidgetsSetting()
 void GenshinImpactNaturalLaw::ReceiveCloseSelfSignalFromWidgetsSetting()
 {
 	MainMaskLabel->hide();
+}
+void GenshinImpactNaturalLaw::ShowTopMainWidget()
+{
+	this->show();
+
+	Qt::WindowStates winStatus = Qt::WindowNoState;
+	if (this->windowState() & Qt::WindowMaximized) {
+		winStatus = Qt::WindowMaximized;
+	}
+	this->setWindowState(Qt::WindowMinimized);
+	this->setWindowState(Qt::WindowActive | winStatus);
+	this->setGeometry(this->geometry());
+	this->activateWindow();
+	this->raise();
 }
 
 void GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg()
