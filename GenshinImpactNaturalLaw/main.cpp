@@ -12,6 +12,9 @@ int main(int argc, char *argv[])
 		a.sendMessage("TianLi Launcher Is Running");
 		return 0;
 	}
+	QTranslator translator;
+	translator.load(":/QtWidgetsSetting/genshinimpactnaturallaw_zh.qm");
+	a.installTranslator(&translator);
 
 	GenshinImpactNaturalLaw w;
 

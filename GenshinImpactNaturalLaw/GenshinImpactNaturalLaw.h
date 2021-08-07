@@ -4,6 +4,7 @@
 #include <QGraphicsDropShadowEffect>
 #include <QDesktopServices>
 #include <QTextCodec>
+#include <QTranslator>
 #include <QSystemTrayIcon>
 #include <QDesktopServices>
 #include <QAction>

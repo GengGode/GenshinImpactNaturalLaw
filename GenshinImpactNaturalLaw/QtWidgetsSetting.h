@@ -37,7 +37,7 @@ private:
 	QPoint m_Move;
 	bool leftBtnClk = false;
 
-	QString KeyString1 = "当前版本：";//QString::QStringLiteral("当前版本：");
+	QString KeyString1 = tr("Str_NowVer:");//QString::QStringLiteral("当前版本：");
 
 	QtWidgetsMessageBox *WidgetsMessageBox = nullptr;
 	QLabel *MainMaskLabel = nullptr;

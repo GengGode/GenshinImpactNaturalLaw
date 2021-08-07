@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 #include <QDir>
 #include <QFileInfo>
 #include <QApplication>
@@ -20,65 +20,65 @@ public:
 	~UpdataModule();
 
 
-	// è®¾ç½®è¦ä¸‹è½½çš„urlå’Œæ–‡ä»¶å
+	// ÉèÖÃÒªÏÂÔØµÄurlºÍÎÄ¼şÃû
 	void setData(QUrl url);
-	//å¼€å§‹ä¸‹è½½
+	//¿ªÊ¼ÏÂÔØ
 	void getFile();
 	void startRequest(QUrl url);
-	//å‘ç”Ÿçš„é”™è¯¯ä»£ç 
+	//·¢ÉúµÄ´íÎó´úÂë
 	//int lastError();
-	//è¿”å›æ˜¯å¦æœ‰é”™è¯¯å‘ç”Ÿ
+	//·µ»ØÊÇ·ñÓĞ´íÎó·¢Éú
 	//bool errorValid();
-	//è¿”å›æ˜¯å¦ä¸‹è½½ä¸­
+	//·µ»ØÊÇ·ñÏÂÔØÖĞ
 	//bool isRunning();
-	//è¿”å›æ˜¯å¦ä¸‹è½½å®Œæˆ
+	//·µ»ØÊÇ·ñÏÂÔØÍê³É
 	//bool isFinished();
-	//è¿”å›æ‰€ä¸‹è½½æ–‡ä»¶çš„ç‰ˆæœ¬å·
+	//·µ»ØËùÏÂÔØÎÄ¼şµÄ°æ±¾ºÅ
 	QString getDownloadVersionCode();
-	//è¿”å›æ‰€ä¸‹è½½æ–‡ä»¶çš„åå­—ï¼ˆå¸¦æ‰©å±•åï¼‰
+	//·µ»ØËùÏÂÔØÎÄ¼şµÄÃû×Ö£¨´øÀ©Õ¹Ãû£©
 	//QString getFileName();
 	void cancel();
 private:
 
-	//=====çŠ¶æ€å˜é‡=====
-	bool bisFinished;   //ä¸‹è½½æ˜¯å¦å®Œæˆ
-	bool bisRunning;    //ä¸‹è½½æ˜¯å¦è¿›è¡Œä¸­
-	bool bisError;      //æ˜¯å¦æœ‰é”™è¯¯å‘ç”Ÿ
-	int errorCode;      //é”™è¯¯ä»£ç 
-	int allBits = 0;    //æ–‡ä»¶å¤§å°
+	//=====×´Ì¬±äÁ¿=====
+	bool bisFinished;   //ÏÂÔØÊÇ·ñÍê³É
+	bool bisRunning;    //ÏÂÔØÊÇ·ñ½øĞĞÖĞ
+	bool bisError;      //ÊÇ·ñÓĞ´íÎó·¢Éú
+	int errorCode;      //´íÎó´úÂë
+	int allBits = 0;    //ÎÄ¼ş´óĞ¡
 	bool httpRequestAborted;
 
-	//=====å¯¹è±¡å£°æ˜=====
+	//=====¶ÔÏóÉùÃ÷=====
 	VersionNumber version;
 
 	QString FileBuff;
-	QFile *downloadFile;                //ä¿å­˜ç›®æ ‡æ–‡ä»¶æŒ‡é’ˆ
-	QUrl downloadUrl;                   //ä¸‹è½½åœ°å€Url
-	QString savePath;                   //æ–‡ä»¶å­˜æ”¾è·¯å¾„
-	QString versionCode = "";           //æ‰€ä¸‹è½½çš„æ–‡ä»¶ç‰ˆæœ¬å·
-	QString fileName = "";              //æ‰€ä¸‹è½½æ–‡ä»¶å
-	QNetworkReply *downloadReply;       //ç½‘ç»œåº”ç­”æŒ‡é’ˆ
-	QNetworkAccessManager downloadmanager;     //ç½‘ç»œè¿æ¥ä¸»ç±»æŒ‡é’ˆ
+	QFile *downloadFile;                //±£´æÄ¿±êÎÄ¼şÖ¸Õë
+	QUrl downloadUrl;                   //ÏÂÔØµØÖ·Url
+	QString savePath;                   //ÎÄ¼ş´æ·ÅÂ·¾¶
+	QString versionCode = "";           //ËùÏÂÔØµÄÎÄ¼ş°æ±¾ºÅ
+	QString fileName = "";              //ËùÏÂÔØÎÄ¼şÃû
+	QNetworkReply *downloadReply;       //ÍøÂçÓ¦´ğÖ¸Õë
+	QNetworkAccessManager downloadmanager;     //ÍøÂçÁ¬½ÓÖ÷ÀàÖ¸Õë
 signals:
 
-	//å½“é”™è¯¯å‘ç”Ÿæ—¶å‘å¤–æŠ›å‡ºé”™è¯¯ä¿¡æ¯
+	//µ±´íÎó·¢ÉúÊ±ÏòÍâÅ×³ö´íÎóĞÅÏ¢
 	void error(QNetworkReply::NetworkError);
-	//æŠ›å‡ºä¸‹è½½è¿›åº¦(æ›´æ–°è¿›åº¦æ¡)
+	//Å×³öÏÂÔØ½ø¶È(¸üĞÂ½ø¶ÈÌõ)
 	void updateProgress(qint64 bytesSent, qint64 bytesTotal);
-	//ä¸‹è½½ç»“æœ 0æˆåŠŸ å…¶ä»–å¤±è´¥
+	//ÏÂÔØ½á¹û 0³É¹¦ ÆäËûÊ§°Ü
 	void downloadResult(int retCode);
 
 	void finish();
 
 private slots:
 
-	//å‡†å¤‡ä¸‹è½½ï¼Œè¯»å–æ•°æ®
+	//×¼±¸ÏÂÔØ£¬¶ÁÈ¡Êı¾İ
 	void downloadReadyRead();
-	//ä¸‹è½½å®Œæˆ
+	//ÏÂÔØÍê³É
 	void downloadFinished();
-	//ä¸‹è½½è¿‡ç¨‹ä¸­å‘ç”Ÿé”™è¯¯
+	//ÏÂÔØ¹ı³ÌÖĞ·¢Éú´íÎó
 	void downloadError(QNetworkReply::NetworkError errorCode);
-	//ä¸‹è½½è¿‡ç¨‹è¿›åº¦æ¡
+	//ÏÂÔØ¹ı³Ì½ø¶ÈÌõ
 	void downloadProgress(qint64 bytesSent, qint64 bytesTotal);
 };
 

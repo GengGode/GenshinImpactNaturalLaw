@@ -123,4 +123,9 @@
   <ItemGroup>
     <None Include="GenshinImpactNaturalLaw.pro" />
   </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="genshinimpactnaturallaw_zh.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
+  </ItemGroup>
 </Project>

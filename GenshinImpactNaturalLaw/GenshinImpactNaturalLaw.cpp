@@ -1,4 +1,4 @@
-ï»¿#include "GenshinImpactNaturalLaw.h"
+#include "GenshinImpactNaturalLaw.h"
 
 GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
     : QMainWindow(parent)
@@ -10,17 +10,18 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	uiConnectButtonLabel();
 	uiShowImage();
 
+
 	Tray = new QSystemTrayIcon(this);
 	Tray->setIcon(QIcon(QPixmap(":/icon/resource/icon/ICON.png")));
-	Tray->setToolTip(QString::fromUtf8("\345\244\251\347\220\206"));//å¤©ç†
-	QString title = "å¤©ç†";
-	QString text = "åŽŸç¥žå¤©ç†ç³»ç»Ÿ";
+	Tray->setToolTip(tr("Str_TianLi"));//ÌìÀí
+	QString title = "ÌìÀí";
+	QString text = "Ô­ÉñÌìÀíÏµÍ³";
 	Tray->show();
 	connect(Tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(TrayMenuClickEvent(QSystemTrayIcon::ActivationReason)));
 	
-	ShowMainAction = new QAction(QString::fromUtf8("\346\230\276\347\244\272\344\270\273\347\225\214\351\235\242"), this);//æ˜¾ç¤ºä¸»ç•Œé¢
+	ShowMainAction = new QAction(tr("Str_ShowMainWidget"), this);//ÏÔÊ¾Ö÷½çÃæ
 	connect(ShowMainAction, SIGNAL(triggered()), this, SLOT(show()));
-	ExitAction = new QAction(QString::fromUtf8("\351\200\200\345\207\272"), this);//é€€å‡º
+	ExitAction = new QAction(tr("Str_Exit"), this);//ÍË³ö
 	connect(ExitAction, SIGNAL(triggered()), this, SLOT(close()));
 
 	TrayMenu = new QMenu(this);
@@ -34,7 +35,7 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	Shadow_LabelPage->setOffset(0.0);
 	ui.label_Page_Rect->setGraphicsEffect(Shadow_LabelPage);
 
-	setAttribute(Qt::WA_TranslucentBackground, true);  // èƒŒæ™¯é€æ˜Ž
+	setAttribute(Qt::WA_TranslucentBackground, true);  // ±³¾°Í¸Ã÷
 	QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
 	shadow->setOffset(0, 0);
 	shadow->setColor(QColor(15, 15, 15, 50));
@@ -270,9 +271,9 @@ void GenshinImpactNaturalLaw::TrayMenuClickEvent(QSystemTrayIcon::ActivationReas
 {
 	switch (reason)
 	{
-	case QSystemTrayIcon::Trigger://å•å‡»æ‰˜ç›˜å›¾æ ‡
+	case QSystemTrayIcon::Trigger://µ¥»÷ÍÐÅÌÍ¼±ê
 		break;
-	case QSystemTrayIcon::DoubleClick://åŒå‡»æ‰˜ç›˜å›¾æ ‡
+	case QSystemTrayIcon::DoubleClick://Ë«»÷ÍÐÅÌÍ¼±ê
 		this->showNormal();
 		break;
 	default:
@@ -304,7 +305,7 @@ void GenshinImpactNaturalLaw::ShowTopMainWidget()
 
 void GenshinImpactNaturalLaw::ReceiveUniqueKeyMsg()
 {
-	//è¿˜åŽŸæ˜¾ç¤ºçª—å£
+	//»¹Ô­ÏÔÊ¾´°¿Ú
 
 	this->show();
 
