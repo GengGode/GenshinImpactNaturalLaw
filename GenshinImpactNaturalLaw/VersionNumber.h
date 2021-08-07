@@ -10,6 +10,8 @@ class VersionNumber
 
 public:
 	VersionNumber();
+	VersionNumber(int Major, int Minor, int Revision);
+	VersionNumber(QString versionString);
 	~VersionNumber();
 	operator QString();
 	VersionNumber& operator=(const QString & versionString);

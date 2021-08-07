@@ -12,18 +12,20 @@ UpdataModule::~UpdataModule()
 	cancel();
 }
 
-void UpdataModule::setData(QUrl url, QString pathtoSave)
+void UpdataModule::setData(QUrl url)
 {
 	QString sd = QSslSocket::sslLibraryBuildVersionString();
-	bool is= QSslSocket::supportsSsl();
-	downloadUrl = url;
+	bool is = QSslSocket::supportsSsl();
+
+	QString srte= url.toString();
+	downloadUrl = QUrl(url.toString());
 
 	QDir dir;
 	QString filePath = QApplication::applicationDirPath() + "/download/";
 	if (!dir.exists(filePath)) {
 		dir.mkpath(filePath);
 	}
-	fileName= downloadUrl.fileName();
+	fileName = downloadUrl.fileName();
 	savePath = filePath + fileName;
 }
 
@@ -47,6 +49,7 @@ void UpdataModule::getFile()
 		return;
 	}
 	allBits = downloadFile->size();
+
 	httpRequestAborted = false;
 	//尝试获取文件
 	startRequest(downloadUrl);
@@ -70,6 +73,7 @@ void UpdataModule::startRequest(QUrl url)
 		connect(downloadReply, SIGNAL(readyRead()), this, SLOT(downloadReadyRead()));
 		connect(downloadReply, SIGNAL(finished()), this, SLOT(downloadFinished()));
 		connect(downloadReply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(downloadError(QNetworkReply::NetworkError)));
+		connect(downloadReply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(downloadProgress(qint64, qint64)));
 	}
 }
 
@@ -97,7 +101,7 @@ void UpdataModule::downloadReadyRead()
 	//如果文件可以访问，下载
 	if (downloadFile)
 		downloadFile->write(downloadReply->readAll());
-	FileBuff = FileBuff + QString(downloadReply->readAll()); 
+	FileBuff = FileBuff + QString(downloadReply->readAll());
 }
 void UpdataModule::downloadFinished()
 {
@@ -109,14 +113,12 @@ void UpdataModule::downloadFinished()
 	downloadFile->flush();
 	downloadFile->close();
 
-	
+
 
 	QVariant redirectionTarget = downloadReply->attribute(QNetworkRequest::RedirectionTargetAttribute);
 	if (downloadReply->error())
-	{//299提示RANGE错误
-		//DEBUG_LOG(qsl("downloadReply error code:") + QString::number(downloadReply->error()));
-		//downloadFile->remove();
-		//emit downloadResult(-1);
+	{
+
 	}
 	else if (!redirectionTarget.isNull())
 	{
@@ -133,22 +135,12 @@ void UpdataModule::downloadFinished()
 	else
 	{
 
-		QString fileName = QFileInfo(downloadUrl.path()).fileName();
-		delete downloadFile;
-		downloadFile = 0;
-		bisFinished = true;
-
-		QString line;
-		QFile readVer(savePath);
-		if (!readVer.open(QIODevice::ReadOnly | QIODevice::Text))
+		if (bisFinished == false)
 		{
+			bisFinished = true;
 
+			emit finish();
 		}
-		else
-		{
-			line = readVer.readLine();
-		}
-
 		emit downloadResult(0);
 	}
 
@@ -158,9 +150,10 @@ void UpdataModule::downloadFinished()
 
 void UpdataModule::downloadError(QNetworkReply::NetworkError errorCode)
 {
-	emit downloadResult(-1);
+	emit downloadResult(errorCode);
 }
 
-void UpdataModule::downloadProgress(qint64, qint64)
+void UpdataModule::downloadProgress(qint64 bytesSent, qint64 bytesTotal)
 {
+	emit updateProgress(bytesSent, bytesTotal);
 }

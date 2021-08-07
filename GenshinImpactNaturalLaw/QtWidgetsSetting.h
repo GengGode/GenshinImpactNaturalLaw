@@ -1,4 +1,5 @@
 #pragma once
+#include <windows.h>
 #include <vector>
 #include <QUrl>
 #include <QFileInfo>
@@ -29,7 +30,7 @@ private:
 public:
 	SettingData *setting = nullptr;
 	ModulesManager *modules = nullptr;
-	UpdataModule updata;
+	UpdataModule *updata;
 private:
 	QPoint m_Press;
 	QPoint m_Move;
@@ -41,6 +42,7 @@ private:
 
 	QVBoxLayout *ModulesSubVBoxLayout = nullptr;
 	std::vector<QCheckBox*> ModulesItemCheckBoxList;
+	VersionNumber myVersion;
 private:
 	std::vector<QPushButton*> UIButtonList;
 	std::vector<QLabel*> ScrollLabelList;
@@ -63,6 +65,9 @@ private slots:
 	void OK();
 	void SwitchOptions();
 	void BarMove_ChangeButton();
+
+	void UpdataLauncher_GetUrlVersion();
+
 
 	void ShowMessageBox();
 
@@ -87,4 +92,5 @@ private slots:
 signals:
 	void SendSettingToMainWidgets();
 	void SendCloseSelfSignalToMainWidgets();
+	void SendCloseAllSignalToMainWidgets();
 };

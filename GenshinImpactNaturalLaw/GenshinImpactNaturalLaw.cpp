@@ -87,6 +87,7 @@ void GenshinImpactNaturalLaw::NewWidgetsSetting()
 		WidgetsSetting = new QtWidgetsSetting();
 		connect(WidgetsSetting, SIGNAL(SendSettingToMainWidgets()), this, SLOT(ReceiveSettingFromWidgetsSetting()));
 		connect(WidgetsSetting, SIGNAL(SendCloseSelfSignalToMainWidgets()), this, SLOT(ReceiveCloseSelfSignalFromWidgetsSetting()));
+		connect(WidgetsSetting, SIGNAL(SendCloseAllSignalToMainWidgets()), this, SLOT(close()));
 		WidgetsSetting->SetSetting(&setting);
 		WidgetsSetting->SetModules(&modules);
 

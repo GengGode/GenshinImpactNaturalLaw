@@ -30,6 +30,19 @@ QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 	connect(ui.pushButton_Check_5, SIGNAL(clicked()), this, SLOT(CheckOptions_UpdataLauncher()));
 	connect(ui.pushButton_Check_6, SIGNAL(clicked()), this, SLOT(CheckOptions_UpdataGameLauncher()));
 	connect(ui.pushButton_Check_7, SIGNAL(clicked()), this, SLOT(CheckOptions_UpdataGame()));
+
+	QString myVersionFilePath = QApplication::applicationDirPath() + "/version.tag";
+
+	QFile myVersionFile(myVersionFilePath);
+	if (!myVersionFile.open(QIODevice::ReadOnly | QIODevice::Text))
+	{
+	}
+	else
+	{
+		QString line = myVersionFile.readLine();
+		myVersion = VersionNumber(line);
+		ui.label_Label_5->setText("µ±Ç°°æ±¾£º" + myVersion);
+	}
 }
 
 QtWidgetsSetting::~QtWidgetsSetting()
@@ -245,6 +258,50 @@ void QtWidgetsSetting::BarMove_ChangeButton()
 	}
 }
 
+void QtWidgetsSetting::UpdataLauncher_GetUrlVersion()
+{
+	QString filePath = QApplication::applicationDirPath() + "/download/";
+	QString fileName = "version.tag";
+	QString savePath = filePath + fileName;
+
+	QString line = "0.0.0";
+	QFile readVer(savePath);
+	if (!readVer.open(QIODevice::ReadOnly | QIODevice::Text))
+	{
+
+	}
+	else
+	{
+		line = readVer.readLine();
+	}
+
+	VersionNumber newVer(line);
+
+	if (newVer > myVersion)
+	{
+		QString command = "\"" + QApplication::applicationDirPath() +"/update/UpdateProgram.exe" + "\"";
+		TCHAR szCmdLine[1024] = {};
+
+		command.toWCharArray(szCmdLine);
+		STARTUPINFO si;
+		memset(&si, 0, sizeof(STARTUPINFO));
+		si.cb = sizeof(STARTUPINFO);
+		si.dwFlags = STARTF_USESHOWWINDOW;
+		si.wShowWindow = SW_SHOW;
+		PROCESS_INFORMATION pi;
+
+		bool res = CreateProcess(NULL, szCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+
+		if (res != true)
+		{
+			int k = GetLastError();
+		}
+
+		emit SendCloseAllSignalToMainWidgets();
+		this->OK();
+	}
+}
+
 void QtWidgetsSetting::ShowMessageBox()
 {
 	if (WidgetsMessageBox == nullptr)
@@ -432,10 +489,12 @@ void QtWidgetsSetting::CheckOptions_RefreshModule()
 
 void QtWidgetsSetting::CheckOptions_UpdataLauncher()
 {
-	updata.setData(QUrl("https://github.com/GengGode/GenshinImpact_AutoTrack_DLL/releases/latest/download/version.tag"), "123");
+	updata = new UpdataModule();
+	updata->setData(QUrl(QString("https://github.com/GengGode/GenshinImpactNaturalLaw/releases/latest/download/version.tag")));
 	//updata.setData(QUrl("https://github.com/GengGode/GenshinImpact_AutoTrack_DLL/releases/latest/download/cvAutoTrack.7z"), "123");
-	updata.getFile();
-	
+	connect(updata, &UpdataModule::finish, this, &QtWidgetsSetting::UpdataLauncher_GetUrlVersion);
+
+	updata->getFile();
 }
 
 void QtWidgetsSetting::CheckOptions_UpdataGameLauncher()

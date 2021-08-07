@@ -4,6 +4,19 @@ VersionNumber::VersionNumber()
 {
 }
 
+VersionNumber::VersionNumber(int Major, int Minor, int Revision)
+{
+	Major_Version_Number = Major;
+	Minor_Version_Number = Minor;
+	Revision_Number = Revision;
+}
+
+VersionNumber::VersionNumber(QString versionString)
+{
+	VersionString = versionString;
+	tryToNumber(versionString);
+}
+
 VersionNumber::~VersionNumber()
 {
 }
@@ -11,7 +24,7 @@ VersionNumber::~VersionNumber()
 VersionNumber::operator QString()
 {
 	return QString::number(Major_Version_Number) + "." +
-		QString::number(Minor_Version_Number)+ "." + 
+		QString::number(Minor_Version_Number) + "." +
 		QString::number(Revision_Number);
 }
 
@@ -50,13 +63,19 @@ bool VersionNumber::operator>(const VersionNumber & version)
 	{
 		return true;
 	}
-	if (Minor_Version_Number > version.Minor_Version_Number)
+	else if (Major_Version_Number == version.Major_Version_Number)
 	{
-		return true;
-	}
-	if (Revision_Number > version.Revision_Number)
-	{
-		return true;
+		if (Minor_Version_Number > version.Minor_Version_Number)
+		{
+			return true;
+		}
+		else if (Minor_Version_Number == version.Minor_Version_Number)
+		{
+			if (Revision_Number > version.Revision_Number)
+			{
+				return true;
+			}
+		}
 	}
 	return false;
 }
@@ -67,13 +86,19 @@ bool VersionNumber::operator<(const VersionNumber & version)
 	{
 		return true;
 	}
-	if (Minor_Version_Number < version.Minor_Version_Number)
+	else if (Major_Version_Number == version.Major_Version_Number)
 	{
-		return true;
-	}
-	if (Revision_Number < version.Revision_Number)
-	{
-		return true;
+		if (Minor_Version_Number < version.Minor_Version_Number)
+		{
+			return true;
+		}
+		else if (Minor_Version_Number == version.Minor_Version_Number)
+		{
+			if (Revision_Number < version.Revision_Number)
+			{
+				return true;
+			}
+		}
 	}
 	return false;
 }
