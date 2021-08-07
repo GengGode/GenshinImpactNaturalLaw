@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <windows.h>
 #include <vector>
 #include <QUrl>
@@ -36,7 +36,7 @@ private:
 	QPoint m_Move;
 	bool leftBtnClk = false;
 
-	QString KeyString1 = "µ±Ç°°æ±¾£º";
+	QString KeyString1 = "å½“å‰ç‰ˆæœ¬ï¼š";
 
 	QtWidgetsMessageBox *WidgetsMessageBox = nullptr;
 	QLabel *MainMaskLabel = nullptr;
