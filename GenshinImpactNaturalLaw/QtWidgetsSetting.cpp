@@ -41,7 +41,7 @@ QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 	{
 		QString line = myVersionFile.readLine();
 		myVersion = VersionNumber(line);
-		ui.label_Label_5->setText("µ±Ç°°æ±¾£º" + myVersion);
+		ui.label_Label_5->setText(KeyString1 + myVersion);
 	}
 }
 

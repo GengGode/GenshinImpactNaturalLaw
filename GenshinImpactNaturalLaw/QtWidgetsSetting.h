@@ -36,6 +36,8 @@ private:
 	QPoint m_Move;
 	bool leftBtnClk = false;
 
+	QString KeyString1 = "µ±Ç°°æ±¾£º";
+
 	QtWidgetsMessageBox *WidgetsMessageBox = nullptr;
 	QLabel *MainMaskLabel = nullptr;
 	QScrollBar *scrBar = nullptr;
