@@ -1,5 +1,4 @@
 #include "GenshinImpactNaturalLaw.h"
-#pragma execution_character_set("utf-8")
 
 GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
     : QMainWindow(parent)
@@ -13,15 +12,15 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 
 	Tray = new QSystemTrayIcon(this);
 	Tray->setIcon(QIcon(QPixmap(":/icon/resource/icon/ICON.png")));
-	Tray->setToolTip("天理");
+	Tray->setToolTip(QString::fromUtf8("\345\244\251\347\220\206"));//天理
 	QString title = "天理";
 	QString text = "原神天理系统";
 	Tray->show();
 	connect(Tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(TrayMenuClickEvent(QSystemTrayIcon::ActivationReason)));
-
-	ShowMainAction = new QAction("显示主界面", this);
+	//"\345\244\251\347\220\206 \351\200\200\345\207\272 \346\230\276\347\244\272\344\270\273\347\225\214\351\235\242"
+	ShowMainAction = new QAction(QString::fromUtf8("\346\230\276\347\244\272\344\270\273\347\225\214\351\235\242"), this);//显示主界面
 	connect(ShowMainAction, SIGNAL(triggered()), this, SLOT(show()));
-	ExitAction = new QAction("退出", this);
+	ExitAction = new QAction(QString::fromUtf8("\351\200\200\345\207\272"), this);//退出
 	connect(ExitAction, SIGNAL(triggered()), this, SLOT(close()));
 
 	TrayMenu = new QMenu(this);

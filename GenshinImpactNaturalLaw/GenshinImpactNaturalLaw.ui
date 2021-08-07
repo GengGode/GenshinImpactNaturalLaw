@@ -433,7 +433,7 @@ QTabWidget::tab-bar {
 </string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <property name="styleSheet">
@@ -583,7 +583,7 @@ color:rgb(255, 210, 132);
 }</string>
          </property>
          <property name="text">
-          <string>更新相关尚未实现，不必尝试</string>
+          <string>可在设置界面检查更新</string>
          </property>
         </widget>
        </item>
