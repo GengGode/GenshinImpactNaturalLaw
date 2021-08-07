@@ -278,7 +278,23 @@
         <location filename="QtWidgetsSetting.h" line="40"/>
         <source>Str_NowVer:</source>
         <oldsource>Str_NowVer_</oldsource>
-        <translation type="unfinished">当前版本：</translation>
+        <translation>当前版本：</translation>
+    </message>
+    <message>
+        <location filename="QtWidgetsSetting.cpp" line="439"/>
+        <source>Str_SelectGIPath</source>
+        <translation>选择原神所在目录</translation>
+    </message>
+    <message>
+        <location filename="QtWidgetsSetting.cpp" line="439"/>
+        <source>Str_ApplicationProgram</source>
+        <translation>应用程序</translation>
+    </message>
+    <message>
+        <location filename="QtWidgetsSetting.cpp" line="405"/>
+        <location filename="QtWidgetsSetting.cpp" line="460"/>
+        <source>Str_SelectGILauncherPath</source>
+        <translation>选择原神启动器所在目录</translation>
     </message>
 </context>
 <context>

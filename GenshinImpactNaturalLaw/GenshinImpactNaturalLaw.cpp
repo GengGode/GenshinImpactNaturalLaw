@@ -10,12 +10,12 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	uiConnectButtonLabel();
 	uiShowImage();
 
+	//this->show();
+	//this->activateWindow();
 
 	Tray = new QSystemTrayIcon(this);
 	Tray->setIcon(QIcon(QPixmap(":/icon/resource/icon/ICON.png")));
 	Tray->setToolTip(tr("Str_TianLi"));//天理
-	QString title = "天理";
-	QString text = "原神天理系统";
 	Tray->show();
 	connect(Tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(TrayMenuClickEvent(QSystemTrayIcon::ActivationReason)));
 	

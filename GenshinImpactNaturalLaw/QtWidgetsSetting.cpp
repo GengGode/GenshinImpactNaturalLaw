@@ -300,6 +300,10 @@ void QtWidgetsSetting::UpdataLauncher_GetUrlVersion()
 		emit SendCloseAllSignalToMainWidgets();
 		this->OK();
 	}
+	else
+	{
+		this->OK();
+	}
 }
 
 void QtWidgetsSetting::ShowMessageBox()
@@ -398,7 +402,7 @@ void QtWidgetsSetting::CheckOptions_CheckGameLauncher()
 	{
 		FileDialogPath = setting->launcher_install_path;
 	}
-	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, "选择原神启动器所在目录", FileDialogPath, QFileDialog::ShowDirsOnly);
+	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, tr("Str_SelectGILauncherPath")/*"选择原神启动器所在目录"*/, FileDialogPath, QFileDialog::ShowDirsOnly);
 	
 	if (!GameLauncherPath.isEmpty())
 	{
@@ -432,7 +436,7 @@ void QtWidgetsSetting::CheckOptions_CheckGame()
 	{
 		FileDialogPath = setting->game_install_path;
 	}
-	QString GamePath = QFileDialog::getOpenFileName(this, "选择原神所在目录", FileDialogPath, "应用程序 (*.exe);;");
+	QString GamePath = QFileDialog::getOpenFileName(this, tr("Str_SelectGIPath")/*"选择原神所在目录"*/, FileDialogPath,tr("Str_ApplicationProgram")+" (*.exe);;"/* "应用程序 (*.exe);;"*/);
 	if (!GamePath.isEmpty()) 
 	{
 		setting->game_start_name = GamePath.section('/', -1);
@@ -453,7 +457,7 @@ void QtWidgetsSetting::CheckOptions_CheckModule()
 	{
 		FileDialogPath = setting->launcher_install_path;
 	}
-	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, "选择原神启动器所在目录", FileDialogPath, QFileDialog::ShowDirsOnly);
+	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, tr("Str_SelectGILauncherPath")/*"选择原神启动器所在目录"*/, FileDialogPath, QFileDialog::ShowDirsOnly);
 
 	if (!GameLauncherPath.isEmpty())
 	{
