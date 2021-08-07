@@ -1,4 +1,4 @@
-#include "UpdataModule.h"
+ï»¿#include "UpdataModule.h"
 
 UpdataModule::UpdataModule()
 {
@@ -51,9 +51,9 @@ void UpdataModule::getFile()
 	allBits = downloadFile->size();
 
 	httpRequestAborted = false;
-	//³¢ÊÔ»ñÈ¡ÎÄ¼þ
+	//å°è¯•èŽ·å–æ–‡ä»¶
 	startRequest(downloadUrl);
-	//ÊÂ¼þÑ­»·£¬·ÀÖ¹ÔÚÏÂÔØÃ»Íê³ÉÇ°½áÊø¶ÔÏó
+	//äº‹ä»¶å¾ªçŽ¯ï¼Œé˜²æ­¢åœ¨ä¸‹è½½æ²¡å®Œæˆå‰ç»“æŸå¯¹è±¡
 }
 
 void UpdataModule::startRequest(QUrl url)
@@ -67,7 +67,7 @@ void UpdataModule::startRequest(QUrl url)
 		req.setRawHeader("RANGE", tr("bytes=%1-").arg(allBits).toUtf8());//
 	}
 	downloadReply = downloadmanager.get(req);
-	//Á¬½ÓÐÅºÅÓë²Û
+	//è¿žæŽ¥ä¿¡å·ä¸Žæ§½
 	if (downloadReply)
 	{
 		connect(downloadReply, SIGNAL(readyRead()), this, SLOT(downloadReadyRead()));
@@ -98,7 +98,7 @@ void UpdataModule::cancel()
 }
 void UpdataModule::downloadReadyRead()
 {
-	//Èç¹ûÎÄ¼þ¿ÉÒÔ·ÃÎÊ£¬ÏÂÔØ
+	//å¦‚æžœæ–‡ä»¶å¯ä»¥è®¿é—®ï¼Œä¸‹è½½
 	if (downloadFile)
 		downloadFile->write(downloadReply->readAll());
 	FileBuff = FileBuff + QString(downloadReply->readAll());

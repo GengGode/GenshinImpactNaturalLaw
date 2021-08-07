@@ -1,5 +1,5 @@
-#include "QtWidgetsSetting.h"
-#pragma execution_character_set("utf-8")
+ï»¿#include "QtWidgetsSetting.h"
+//#pragma execution_character_set("utf-8")
 
 QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 	: QWidget(parent)
@@ -398,14 +398,14 @@ void QtWidgetsSetting::CheckOptions_CheckGameLauncher()
 	{
 		FileDialogPath = setting->launcher_install_path;
 	}
-	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, "Ñ¡ÔñÔ­ÉñÆô¶¯Æ÷ËùÔÚÄ¿Â¼", FileDialogPath, QFileDialog::ShowDirsOnly);
+	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, "é€‰æ‹©åŸç¥å¯åŠ¨å™¨æ‰€åœ¨ç›®å½•", FileDialogPath, QFileDialog::ShowDirsOnly);
 	
 	if (!GameLauncherPath.isEmpty())
 	{
 		QFileInfo file(GameLauncherPath+"/launcher.exe");
 		if (file.exists() == false)
 		{
-			emit ShowMessageBox();//Î´ÄÜÕÒµ½ÓÎÏ·±¾Ìå£¬ÇëÖØĞÂÑ¡ÔñÓÎÏ·±¾ÌåÂ·¾¶
+			emit ShowMessageBox();//æœªèƒ½æ‰¾åˆ°æ¸¸æˆæœ¬ä½“ï¼Œè¯·é‡æ–°é€‰æ‹©æ¸¸æˆæœ¬ä½“è·¯å¾„
 			return;
 		}
 		else
@@ -413,7 +413,7 @@ void QtWidgetsSetting::CheckOptions_CheckGameLauncher()
 			setting->launcher_install_path = GameLauncherPath;
 			if (!setting->tryGetGamePath())
 			{
-				emit ShowMessageBox();//Î´ÄÜÕÒµ½ÓÎÏ·±¾Ìå£¬ÇëÊÖ¶¯Ñ¡ÔñÓÎÏ·±¾ÌåÂ·¾¶
+				emit ShowMessageBox();//æœªèƒ½æ‰¾åˆ°æ¸¸æˆæœ¬ä½“ï¼Œè¯·æ‰‹åŠ¨é€‰æ‹©æ¸¸æˆæœ¬ä½“è·¯å¾„
 				return;
 			}
 		}
@@ -432,7 +432,7 @@ void QtWidgetsSetting::CheckOptions_CheckGame()
 	{
 		FileDialogPath = setting->game_install_path;
 	}
-	QString GamePath = QFileDialog::getOpenFileName(this, "Ñ¡ÔñÔ­ÉñËùÔÚÄ¿Â¼", FileDialogPath, "Ó¦ÓÃ³ÌĞò (*.exe);;");
+	QString GamePath = QFileDialog::getOpenFileName(this, "é€‰æ‹©åŸç¥æ‰€åœ¨ç›®å½•", FileDialogPath, "åº”ç”¨ç¨‹åº (*.exe);;");
 	if (!GamePath.isEmpty()) 
 	{
 		setting->game_start_name = GamePath.section('/', -1);
@@ -453,14 +453,14 @@ void QtWidgetsSetting::CheckOptions_CheckModule()
 	{
 		FileDialogPath = setting->launcher_install_path;
 	}
-	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, "Ñ¡ÔñÔ­ÉñÆô¶¯Æ÷ËùÔÚÄ¿Â¼", FileDialogPath, QFileDialog::ShowDirsOnly);
+	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, "é€‰æ‹©åŸç¥å¯åŠ¨å™¨æ‰€åœ¨ç›®å½•", FileDialogPath, QFileDialog::ShowDirsOnly);
 
 	if (!GameLauncherPath.isEmpty())
 	{
 		QFileInfo file(GameLauncherPath + "/launcher.exe");
 		if (file.exists() == false)
 		{
-			emit ShowMessageBox();//Î´ÄÜÕÒµ½ÓÎÏ·±¾Ìå£¬ÇëÖØĞÂÑ¡ÔñÓÎÏ·±¾ÌåÂ·¾¶
+			emit ShowMessageBox();//æœªèƒ½æ‰¾åˆ°æ¸¸æˆæœ¬ä½“ï¼Œè¯·é‡æ–°é€‰æ‹©æ¸¸æˆæœ¬ä½“è·¯å¾„
 			return;
 		}
 		else
@@ -468,7 +468,7 @@ void QtWidgetsSetting::CheckOptions_CheckModule()
 			setting->launcher_install_path = GameLauncherPath;
 			if (!setting->tryGetGamePath())
 			{
-				emit ShowMessageBox();//Î´ÄÜÕÒµ½ÓÎÏ·±¾Ìå£¬ÇëÊÖ¶¯Ñ¡ÔñÓÎÏ·±¾ÌåÂ·¾¶
+				emit ShowMessageBox();//æœªèƒ½æ‰¾åˆ°æ¸¸æˆæœ¬ä½“ï¼Œè¯·æ‰‹åŠ¨é€‰æ‹©æ¸¸æˆæœ¬ä½“è·¯å¾„
 				return;
 			}
 		}

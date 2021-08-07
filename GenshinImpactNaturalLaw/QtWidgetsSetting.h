@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <vector>
 #include <QUrl>
+#include <QString>
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QApplication>
@@ -36,7 +37,7 @@ private:
 	QPoint m_Move;
 	bool leftBtnClk = false;
 
-	QString KeyString1 = "当前版本：";
+	QString KeyString1 = "当前版本：";//QString::QStringLiteral("当前版本：");
 
 	QtWidgetsMessageBox *WidgetsMessageBox = nullptr;
 	QLabel *MainMaskLabel = nullptr;
