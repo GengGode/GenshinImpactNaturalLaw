@@ -37,20 +37,16 @@ after_build:
     # copy include and source code files\
     - mkdir %MyProjectDir%\x64\build\
     - cd %MyProjectDir%\x64\Release\
-    - ren *.exe tmp.exe
+    #- ren *.exe tmp.exe
     - ps: cp -r $env:MyProjectDir\x64\Release\tmp.exe $env:MyProjectDir\x64\build\
+   
     - cd %MyProjectDir%\x64\build\
-    - echo  %MyProjectDir%\x64\Release\tmp.exe
-    - dir %MyProjectDir%\x64\Release\
-    - dir %MyProjectDir%\x64\build\
-    - windeployqt tmp.exe
-    - ren tmp.exe %ProJectExeName%.exe
+    - windeployqt %ProJectExeName%.exe
+    
+    - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
     
     - echo %APPVEYOR_BUILD_VERSION% >version.tag
-    - chcp 65001
-    - 7z a tmp.7z %MyProjectDir%\x64\build\*
-    
-    - ren tmp.7z source.7z
+    - 7z a source.7z %MyProjectDir%\x64\build\*
     
     - appveyor PushArtifact version.tag
     - appveyor PushArtifact source.7z
