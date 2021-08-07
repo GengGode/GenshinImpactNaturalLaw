@@ -38,7 +38,7 @@ after_build:
     - mkdir %MyProjectDir%\x64\build\
     - cd %MyProjectDir%\x64\Release\
     #- ren *.exe tmp.exe
-    - ps: cp -r $env:MyProjectDir\x64\Release\%ProJectExeName%.exe $env:MyProjectDir\x64\build\
+    - copy %MyProjectDir%\x64\Release\%ProJectExeName%.exe %MyProjectDir%\x64\build\
    
     - cd %MyProjectDir%\x64\build\
     - windeployqt %ProJectExeName%.exe
