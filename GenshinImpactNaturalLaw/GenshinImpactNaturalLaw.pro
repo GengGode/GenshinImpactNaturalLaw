@@ -6,6 +6,7 @@ QT += widgets network
 TEMPLATE = app
 TARGET = TianLi_Launcher
 RC_ICONS = MainIcon.ico
+QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
 RC_FILE = GenshinImpactNaturalLawIcon.rc
 DESTDIR = ../x64/Release
 CONFIG += release
