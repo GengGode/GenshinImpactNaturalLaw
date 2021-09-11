@@ -501,7 +501,7 @@ height: 0px;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-975</y>
+      <y>-1127</y>
       <width>561</width>
       <height>1465</height>
      </rect>
@@ -949,6 +949,9 @@ border-radius: 0px;
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_Check_2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>254</width>
@@ -990,6 +993,9 @@ background-color:rgb(236, 233, 224);
       </item>
       <item>
        <widget class="QLabel" name="label_Label_2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -1009,6 +1015,9 @@ color:rgb(148, 150, 153);</string>
        <layout class="QVBoxLayout" name="verticalLayout_Path_2">
         <item>
          <widget class="QLineEdit" name="lineEdit_Path_2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -1063,6 +1072,9 @@ border-radius: 0px;
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_Check_3">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -1356,6 +1368,9 @@ color:rgb(148, 150, 153);</string>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_Check_6">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>254</width>
@@ -1440,6 +1455,9 @@ color:rgb(148, 150, 153);</string>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_Check_7">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>254</width>

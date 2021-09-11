@@ -9,8 +9,10 @@
 #include <QDesktopServices>
 #include <QAction>
 #include <QMenu>
+#include <QMovie>
 #include <QProcess>
 #include <QMouseEvent>
+#include <QMediaPlayer>
 #include <QtWidgets/QMainWindow>
 #include "ui_GenshinImpactNaturalLaw.h"
 #include "QtWidgetsSetting.h"

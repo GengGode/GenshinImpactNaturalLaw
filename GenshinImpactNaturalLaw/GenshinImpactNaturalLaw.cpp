@@ -171,9 +171,41 @@ void GenshinImpactNaturalLaw::uiShowImage()
 	{
 		return;
 	}
-	BackgroundImage.load(ImagePath);
-	BackgroundImage= BackgroundImage.scaled(ui.MainBackgroundImageRect->width(), ui.MainBackgroundImageRect->height());
-	ui.MainBackgroundImageRect->setPixmap(BackgroundImage);
+	QStringList strList = setting.game_dynamic_bg_name.split(".");
+	QString Suffix = strList[strList.size()-1];
+
+	//ÊÓÆµ£¬»á¹Òµô
+	if (Suffix == "mp4")
+	{
+		QMovie *BackgroundMovie = new QMovie(ImagePath);
+		//BackgroundMovie.load(ImagePath);
+	
+		BackgroundMovie->setScaledSize(QSize(ui.MainBackgroundImageRect->width(), ui.MainBackgroundImageRect->height()));
+		//
+		//QMediaPlayer player = new QMediaPlayer;
+		//connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
+		//player->setMedia(QUrl::fromLocalFile(ImagePath));
+		//player->setVolume(50);
+		//player->play();
+
+		ui.MainBackgroundImageRect->setMovie(BackgroundMovie);
+		BackgroundMovie->start();
+	}
+	//
+	if (Suffix == "jpg" || Suffix == "png")
+	{
+		BackgroundImage.load(ImagePath);
+		BackgroundImage = BackgroundImage.scaled(ui.MainBackgroundImageRect->width(), ui.MainBackgroundImageRect->height());
+		ui.MainBackgroundImageRect->setPixmap(BackgroundImage);
+	}
+	//gif±³¾°Í¼²¥·Å
+	if (Suffix == "gif")
+	{
+		QMovie *BackgroundMovie = new QMovie(ImagePath);
+		BackgroundMovie->setScaledSize(QSize(ui.MainBackgroundImageRect->width(), ui.MainBackgroundImageRect->height()));
+		ui.MainBackgroundImageRect->setMovie(BackgroundMovie);
+		BackgroundMovie->start();
+	}
 }
 
 void GenshinImpactNaturalLaw::CloseEvent()
