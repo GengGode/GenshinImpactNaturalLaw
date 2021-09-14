@@ -10,7 +10,7 @@ SettingData::SettingData()
 	is_exit_ismini = IniSettingFile->value("General/is_exit_ismini").toBool();
 	
 	launcher_install_path = IniSettingFile->value("Launcher/launcher_install_path").toString();
-	//game_dynamic_bg_name = IniSettingFile->value("Launcher/game_dynamic_bg_name").toString();
+	game_dynamic_bg_name = IniSettingFile->value("Launcher/game_dynamic_bg_name").toString();
 	
 	game_install_path = IniSettingFile->value("Game/game_install_path").toString();
 	game_start_name = IniSettingFile->value("Game/game_start_name").toString();
@@ -82,7 +82,7 @@ bool SettingData::tryGetGamePath()
 		QSettings *launcherIniFile;
 		launcherIniFile = new QSettings(launcher_install_path + "/config.ini", QSettings::IniFormat);
 		game_install_path = launcherIniFile->value("launcher/game_install_path").toString();
-		game_dynamic_bg_name = launcherIniFile->value("launcher/game_dynamic_bg_name").toString();
+		//game_dynamic_bg_name = launcherIniFile->value("launcher/game_dynamic_bg_name").toString();
 		game_start_name = launcherIniFile->value("launcher/game_start_name").toString();
 	}
 	return true;
