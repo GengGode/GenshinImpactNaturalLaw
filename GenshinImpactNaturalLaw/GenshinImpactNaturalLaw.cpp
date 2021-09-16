@@ -265,6 +265,7 @@ void GenshinImpactNaturalLaw::StartGame()
 					PROCESS_INFORMATION modPi;
 
 					modsRes = CreateProcess(NULL, modCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &modSi, &modPi);
+					//modsRes = modsRes;
 				}
 			}
 		}
