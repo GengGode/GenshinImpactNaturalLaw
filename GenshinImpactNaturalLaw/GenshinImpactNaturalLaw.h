@@ -66,6 +66,8 @@ private slots:
 	void OpenLinkeUrl();
 	void OpenPageLinkeUrl();
 	void OpenButtonLabelLinkeUrl();
+
+	void ChangedUIShowSate();
 	
 	void TrayMenuClickEvent(QSystemTrayIcon::ActivationReason reason);
 	// Receive Setting From WidgetsSetting

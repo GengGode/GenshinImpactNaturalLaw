@@ -47,6 +47,8 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	connect(ui.pushButton_StartGame, SIGNAL(clicked()), this, SLOT(StartGame()));
 	
 	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(OpenPageLinkeUrl()));
+
+	connect(ui.pushButton_Linke_7temp, SIGNAL(clicked()), this, SLOT(ChangedUIShowSate()));
 }
 GenshinImpactNaturalLaw::~GenshinImpactNaturalLaw()
 {
@@ -299,6 +301,27 @@ void GenshinImpactNaturalLaw::OpenButtonLabelLinkeUrl()
 			QDesktopServices::openUrl(LinkeButtonLabelUrlList[i]);
 		}
 	}
+}
+void GenshinImpactNaturalLaw::ChangedUIShowSate()
+{
+	static bool nowIsShowState = true;
+
+	if (nowIsShowState)
+	{
+		ui.GrayBackGround_TabPage_Rect->hide();
+		ui.pushButton->hide();
+		ui.label_Page_Rect->hide();
+		ui.tabWidget->hide();
+	}
+	else
+	{
+		ui.GrayBackGround_TabPage_Rect->show();
+		ui.pushButton->show();
+		ui.label_Page_Rect->show();
+		ui.tabWidget->show();
+
+	}
+		nowIsShowState = !nowIsShowState;
 }
 void GenshinImpactNaturalLaw::TrayMenuClickEvent(QSystemTrayIcon::ActivationReason reason)
 {
