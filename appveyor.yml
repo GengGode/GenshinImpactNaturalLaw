@@ -15,7 +15,8 @@ environment:
     ProjectName: GenshinImpactNaturalLaw
     ProJectExeName: TianLi_Launcher
     MyProjectDir: C:\projects\%ProjectName%
-    
+    Lib7zExeDll: https://github.com/GengGode/7zExeDllRelease/releases/download/1.0.0/Release.zip
+
 skip_tags: true
 
 before_build: 
@@ -36,12 +37,17 @@ build_script:
 after_build:
     # copy include and source code files\
     - mkdir %MyProjectDir%\x64\build\
+    - cd %MyProjectDir%\x64\build\
+    - appveyor DownloadFile %Lib7zExeDll%
+    - 7z x ./Release.zip -y -o./
+    - rm -f ./Release.zip
+
     - cd %MyProjectDir%\x64\Release\
     #- ren *.exe tmp.exe
     - copy %MyProjectDir%\x64\Release\%ProJectExeName%.exe %MyProjectDir%\x64\build\
    
     - cd %MyProjectDir%\x64\build\
-    - windeployqt %ProJectExeName%.exe
+    - windeployqt %ProJectExeName%.exe 
     
     #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
     
