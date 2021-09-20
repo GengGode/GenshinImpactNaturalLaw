@@ -30,6 +30,8 @@ public:
 	~SettingData();
 	SettingData& operator=(const SettingData& setting);
 
+
+	void load();
 	void sync();
 
 	bool tryGetGamePath();

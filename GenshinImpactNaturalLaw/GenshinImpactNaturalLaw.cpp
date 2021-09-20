@@ -218,7 +218,7 @@ void GenshinImpactNaturalLaw::ShowEvent()
 	//this->raise();
 	//WidgetsSetting->hide();
 
-	setting.sync();
+	setting.load();
 	uiShowImage();
 }
 
@@ -321,16 +321,30 @@ void GenshinImpactNaturalLaw::ChangedUIShowSate()
 	if (nowIsShowState)
 	{
 		ui.GrayBackGround_TabPage_Rect->hide();
+		ui.GrayBackGround_Right_Rect->hide();
+
 		ui.pushButton->hide();
 		ui.label_Page_Rect->hide();
 		ui.tabWidget->hide();
+
+		for (int i = 0; i < LinkeButtonList.size(); i++)
+		{
+			LinkeButtonList[i]->hide();
+		}
 	}
 	else
 	{
 		ui.GrayBackGround_TabPage_Rect->show();
+		ui.GrayBackGround_Right_Rect->show();
+
 		ui.pushButton->show();
 		ui.label_Page_Rect->show();
 		ui.tabWidget->show();
+
+		for (int i = 0; i < LinkeButtonList.size(); i++)
+		{
+			LinkeButtonList[i]->show();
+		}
 
 	}
 		nowIsShowState = !nowIsShowState;

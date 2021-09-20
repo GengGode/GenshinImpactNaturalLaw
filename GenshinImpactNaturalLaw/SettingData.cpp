@@ -25,7 +25,7 @@ SettingData::SettingData()
 
 SettingData::~SettingData()
 {
-	sync();
+	//sync();
 }
 
 SettingData & SettingData::operator=(const SettingData & setting)
@@ -45,6 +45,27 @@ SettingData & SettingData::operator=(const SettingData & setting)
 	mods_number = setting.mods_number;
 	is_start_mods_list = setting.is_start_mods_list;
 	return *this;
+}
+
+void SettingData::load()
+{
+	is_auto_run = IniSettingFile->value("General/is_auto_run").toBool();
+	is_start_pupowindows = IniSettingFile->value("General/is_start_pupowindows").toBool();
+	is_start_module = IniSettingFile->value("General/is_start_module").toBool();
+	is_exit_ismini = IniSettingFile->value("General/is_exit_ismini").toBool();
+
+	launcher_install_path = IniSettingFile->value("Launcher/launcher_install_path").toString();
+	game_dynamic_bg_name = IniSettingFile->value("Launcher/game_dynamic_bg_name").toString();
+
+	game_install_path = IniSettingFile->value("Game/game_install_path").toString();
+	game_start_name = IniSettingFile->value("Game/game_start_name").toString();
+
+	is_first_exit = IniSettingFile->value("Module/is_first_exit").toBool();
+	mods_number = IniSettingFile->value("Module/mods_number").toInt();
+	for (int i = 0; i < mods_number; i++)
+	{
+		is_start_mods_list.push_back(IniSettingFile->value("Module/mods_" + QString::number(i)).toBool());
+	}
 }
 
 void SettingData::sync()
