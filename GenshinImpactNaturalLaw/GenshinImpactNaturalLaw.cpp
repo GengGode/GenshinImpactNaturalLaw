@@ -20,7 +20,7 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	connect(Tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(TrayMenuClickEvent(QSystemTrayIcon::ActivationReason)));
 	
 	ShowMainAction = new QAction(tr("Str_ShowMainWidget"), this);//显示主界面
-	connect(ShowMainAction, SIGNAL(triggered()), this, SLOT(show()));
+	connect(ShowMainAction, SIGNAL(triggered()), this, SLOT(ShowEvent()));
 	ExitAction = new QAction(tr("Str_Exit"), this);//退出
 	connect(ExitAction, SIGNAL(triggered()), this, SLOT(close()));
 
@@ -208,6 +208,18 @@ void GenshinImpactNaturalLaw::uiShowImage()
 		ui.MainBackgroundImageRect->setMovie(BackgroundMovie);
 		BackgroundMovie->start();
 	}
+}
+
+void GenshinImpactNaturalLaw::ShowEvent()
+{
+	this->show();
+
+	//this->activateWindow();
+	//this->raise();
+	//WidgetsSetting->hide();
+
+	setting.sync();
+	uiShowImage();
 }
 
 void GenshinImpactNaturalLaw::CloseEvent()

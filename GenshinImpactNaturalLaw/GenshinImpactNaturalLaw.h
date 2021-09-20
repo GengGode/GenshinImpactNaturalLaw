@@ -61,6 +61,7 @@ private:
 
 private slots:
 	void NewWidgetsSetting();
+	void ShowEvent();
 	void CloseEvent();
 	void StartGame();
 	void OpenLinkeUrl();
