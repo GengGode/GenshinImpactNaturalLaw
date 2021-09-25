@@ -501,7 +501,7 @@ height: 0px;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-1127</y>
+      <y>-227</y>
       <width>561</width>
       <height>1465</height>
      </rect>
@@ -875,6 +875,10 @@ background-color:rgb(251, 248, 239);
 }
 QPushButton:pressed {
 background-color:rgb(236, 233, 224);
+}
+
+QPushButton:!enabled {
+background-color:rgb(246, 245, 243);
 }</string>
         </property>
         <property name="text">
@@ -950,7 +954,7 @@ border-radius: 0px;
       <item>
        <widget class="QPushButton" name="pushButton_Check_2">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="minimumSize">
          <size>
@@ -984,6 +988,10 @@ background-color:rgb(251, 248, 239);
 }
 QPushButton:pressed {
 background-color:rgb(236, 233, 224);
+}
+
+QPushButton:!enabled {
+background-color:rgb(246, 245, 243);
 }</string>
         </property>
         <property name="text">
@@ -1107,6 +1115,10 @@ background-color:rgb(251, 248, 239);
 }
 QPushButton:pressed {
 background-color:rgb(236, 233, 224);
+}
+
+QPushButton:!enabled {
+background-color:rgb(246, 245, 243);
 }</string>
         </property>
         <property name="text">
@@ -1190,6 +1202,10 @@ background-color:rgb(251, 248, 239);
 }
 QPushButton:pressed {
 background-color:rgb(236, 233, 224);
+}
+
+QPushButton:!enabled {
+background-color:rgb(246, 245, 243);
 }</string>
         </property>
         <property name="text">
@@ -1316,6 +1332,10 @@ background-color:rgb(251, 248, 239);
 }
 QPushButton:pressed {
 background-color:rgb(236, 233, 224);
+}
+
+QPushButton:!enabled {
+background-color:rgb(246, 245, 243);
 }</string>
         </property>
         <property name="text">
@@ -1403,6 +1423,10 @@ background-color:rgb(251, 248, 239);
 }
 QPushButton:pressed {
 background-color:rgb(236, 233, 224);
+}
+
+QPushButton:!enabled {
+background-color:rgb(246, 245, 243);
 }</string>
         </property>
         <property name="text">
@@ -1490,6 +1514,10 @@ background-color:rgb(251, 248, 239);
 }
 QPushButton:pressed {
 background-color:rgb(236, 233, 224);
+}
+
+QPushButton:!enabled {
+background-color:rgb(246, 245, 243);
 }</string>
         </property>
         <property name="text">

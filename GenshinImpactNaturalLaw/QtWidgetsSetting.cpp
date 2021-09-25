@@ -402,10 +402,13 @@ void QtWidgetsSetting::CheckOptions_CheckGameLauncher()
 	{
 		FileDialogPath = setting->launcher_install_path;
 	}
-	QString GameLauncherPath = QFileDialog::getExistingDirectory(this, tr("Str_SelectGILauncherPath")/*"选择原神启动器所在目录"*/, FileDialogPath, QFileDialog::ShowDirsOnly);
+	QString GameLauncherPath = QFileDialog::getOpenFileName(this, tr("Str_SelectGILauncherPath")/*"选择原神所在目录"*/, FileDialogPath, tr("Str_ApplicationProgram") + " (*.exe);;"/* "应用程序 (*.exe);;"*/);
+
+	//QString GameLauncherPath = QFileDialog::getExistingDirectory(this, tr("Str_SelectGILauncherPath")/*"选择原神启动器所在目录"*/, FileDialogPath, QFileDialog::ShowDirsOnly);
 	
 	if (!GameLauncherPath.isEmpty())
 	{
+		GameLauncherPath = GameLauncherPath.section("/", 0, -2);
 		QFileInfo file(GameLauncherPath+"/launcher.exe");
 		if (file.exists() == false)
 		{
