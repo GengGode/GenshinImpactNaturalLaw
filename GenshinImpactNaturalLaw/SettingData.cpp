@@ -117,7 +117,8 @@ bool SettingData::trySetAutoRun()
 	if (is_auto_run)
 	{
 		QString application_path = QApplication::applicationFilePath();
-		RegRun_Setting.setValue(application_name, application_path.replace("/", "\\"));
+		application_path = "\"" + application_path + "\"";
+		RegRun_Setting.setValue(application_name,application_path.replace("/", "\\"));
 
 		if (RegRun_Setting.value(application_name).toString().isEmpty())
 		{
@@ -162,9 +163,17 @@ QString SettingData::Command_StartGame()
 {
 	QString res(game_install_path);
 	res.append("/" + game_start_name);
+	res = "\"" + res + "\"";
+
+	return res.replace(QRegExp("/"), "\\");
+}
+
+QString SettingData::Command_ExtendParam()
+{
+	QString res;
 	if (is_start_pupowindows)
 	{
 		res.append(parm_borderless);
 	}
-	return res.replace(QRegExp("/"), "\\");
+	return res;
 }
