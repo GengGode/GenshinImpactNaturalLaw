@@ -8,10 +8,10 @@ branches:
     - master
 
 environment:
-    qt: 5.14
+    qt: 5.13
     msvc: msvc2017
     vs: C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\VC\Auxiliary\Build
-    QTDIR: C:\Qt\5.14.2\msvc2017_64
+    QTDIR: C:\Qt\5.13.2\msvc2017_64
     ProjectName: GenshinImpactNaturalLaw
     ProJectExeName: TianLi_Launcher
     MyProjectDir: C:\projects\%ProjectName%
