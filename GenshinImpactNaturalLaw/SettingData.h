@@ -40,6 +40,7 @@ public:
 	QString gamepath();
 	QString Command_NoBorderStartGame();
 	QString Command_StartGame();
+	QString Command_ExtendParam();
 
 
 };
