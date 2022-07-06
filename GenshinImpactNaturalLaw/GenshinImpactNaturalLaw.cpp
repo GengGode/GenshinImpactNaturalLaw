@@ -235,21 +235,43 @@ void GenshinImpactNaturalLaw::CloseEvent()
 }
 void GenshinImpactNaturalLaw::StartGame()
 {
-	QString command = setting.Command_StartGame();
-	//TCHAR szCmdLine[] = { TEXT("E:\\Genshin Impact\\Genshin Impact Game\\yuanshen.exe -popupwindow") };
-	TCHAR szCmdLine[1024] = {};
+	//QString command = setting.Command_StartGame();
+	////TCHAR szCmdLine[] = { TEXT("E:\\Genshin Impact\\Genshin Impact Game\\yuanshen.exe -popupwindow") };
+	//TCHAR szCmdLine[1024] = {};
+	//command.toWCharArray(szCmdLine);
+	
+	//STARTUPINFO si;
+	//memset(&si, 0, sizeof(STARTUPINFO));
+	//si.cb = sizeof(STARTUPINFO);
+	//si.dwFlags = STARTF_USESHOWWINDOW;
+	//si.wShowWindow = SW_SHOW;
+	//PROCESS_INFORMATION pi;
 
-	command.toWCharArray(szCmdLine);
-	STARTUPINFO si;
-	memset(&si, 0, sizeof(STARTUPINFO));
-	si.cb = sizeof(STARTUPINFO);
-	si.dwFlags = STARTF_USESHOWWINDOW;
-	si.wShowWindow = SW_SHOW;
-	PROCESS_INFORMATION pi;
+	//bool res = CreateProcess(NULL, szCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+	
+	QString command_Exe = setting.Command_StartGame();
+	QString command_Param = setting.Command_ExtendParam();
+	TCHAR szCmdExeLine[1024] = {};
+	command_Exe.toWCharArray(szCmdExeLine);
+	HINSTANCE res;
+	if (command_Param.isEmpty())
+	{
+		res = ShellExecute(NULL, L"runas", szCmdExeLine, NULL, NULL, SW_SHOW);
+	}
+	else
+	{
+		TCHAR szCmdParamLine[1024] = {};
+		command_Param.toWCharArray(szCmdParamLine);
+		res = ShellExecute(NULL, L"runas", szCmdExeLine, szCmdParamLine, NULL, SW_SHOW);
+	}
 
-	bool res = CreateProcess(NULL, szCmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
 
-	if (!res)
+	
+	
+	
+	
+	
+	if ((int)(res)>32)
 	{
 		DWORD err = GetLastError();
 		if (err != 0)
