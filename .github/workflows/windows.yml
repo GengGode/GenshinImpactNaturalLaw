@@ -22,7 +22,7 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-      Qt_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/deps_qt/5.15.7/
+      Qt_Dir_Static : D:/a/GenshinImpactNaturalLaw/GenshinImpactNaturalLaw/deps_qt/5.15.7/
       ProjectName: GenshinImpactNaturalLaw
     steps:
     - uses: actions/checkout@v3
