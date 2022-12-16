@@ -1,4 +1,4 @@
-name: MSBuild
+name: Windows
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
     runs-on: windows-latest
     env:
       Qt_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/deps_qt/5.15.7/
-      ProjectName: GenshinImpact_TianLi
+      ProjectName: GenshinImpactNaturalLaw
     steps:
     - uses: actions/checkout@v3
     - name: Add Deps_Qt
@@ -34,10 +34,10 @@ jobs:
         Copy-Item -Path "openssl" -Destination "C:\" -Recurse
         cd ..
         dir
-        copy deps_qt/QtMsBuild.7z $(ProjectName)/
-        copy deps_qt/7z.exe $(ProjectName)/
-        copy deps_qt/7z.dll $(ProjectName)/
-        cd $(ProjectName)
+        copy deps_qt/QtMsBuild.7z ${ProjectName}/
+        copy deps_qt/7z.exe ${ProjectName}/
+        copy deps_qt/7z.dll ${ProjectName}/
+        cd ${ProjectName}
         7z.exe x QtMsBuild.7z   
         
     - name: Add MSBuild to PATH
