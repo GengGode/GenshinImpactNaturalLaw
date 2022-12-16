@@ -34,10 +34,10 @@ jobs:
         Copy-Item -Path "openssl" -Destination "C:\" -Recurse
         cd ..
         dir
-        copy deps_qt/QtMsBuild.7z ${ProjectName}/
-        copy deps_qt/7z.exe ${ProjectName}/
-        copy deps_qt/7z.dll ${ProjectName}/
-        cd ${ProjectName}
+        copy deps_qt/QtMsBuild.7z GenshinImpactNaturalLaw/
+        copy deps_qt/7z.exe GenshinImpactNaturalLaw/
+        copy deps_qt/7z.dll GenshinImpactNaturalLaw/
+        cd GenshinImpactNaturalLaw
         7z.exe x QtMsBuild.7z   
         
     - name: Add MSBuild to PATH
