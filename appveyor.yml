@@ -1,5 +1,5 @@
 version: '1.0.{build}'
-image: Visual Studio 2019
+image: Visual Studio 2017
 configuration: Release
 platform:
     - x64
@@ -8,10 +8,10 @@ branches:
     - master
 
 environment:
-    qt: 5.14
+    qt: 5.13
     msvc: msvc2017
-    vs: C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\VC\Auxiliary\Build
-    QTDIR: C:\Qt\5.14.2\msvc2017_64
+    vs: C:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\Community\VC\Auxiliary\Build
+    QTDIR: C:\Qt\5.13.2\msvc2017_64
     ProjectName: GenshinImpactNaturalLaw
     ProJectExeName: TianLi_Launcher
     MyProjectDir: C:\projects\%ProjectName%
@@ -20,6 +20,7 @@ environment:
 skip_tags: true
 
 before_build: 
+    #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
     #- set PATH=%PATH%;%QTDIR%\bin;
     #- set vcvarsall=%vs%\vcvarsall.bat
     #- call "%vcvarsall%" x64
@@ -49,7 +50,7 @@ after_build:
     - cd %MyProjectDir%\x64\build\
     - windeployqt %ProJectExeName%.exe 
     
-    #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+    
     
     - echo %APPVEYOR_BUILD_VERSION% >version.tag
     - 7z a source.7z %MyProjectDir%\x64\build\*
