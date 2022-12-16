@@ -5,8 +5,9 @@ platform:
     - x64
 branches:
   only:
-    - master
-
+    #- master
+    - appVeyor-*
+    
 environment:
     qt: 5.13
     msvc: msvc2017
