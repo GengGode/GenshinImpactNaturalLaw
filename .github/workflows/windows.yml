@@ -9,14 +9,9 @@ on:
 env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
-
-  # 需要两个机密：
-  # 1. ALICLOUD_CLI_UPADTE_CONFIGYAML 文件上传配置
-  # 2. UPDATE_ARTIFACT_TOKEN 版本更新token
   
   BUILD_CONFIGURATION: Release
-  PROJECT_NAME: GenshinImpactNaturalLaw
-  PROJECT_BUILD_NAME: 天理启动器
+
 
 permissions:
   contents: read
@@ -25,6 +20,11 @@ jobs:
   build:
     runs-on: windows-latest
     env:
+      # 需要两个机密：
+      # 1. ALICLOUD_CLI_UPADTE_CONFIGYAML 文件上传配置
+      # 2. UPDATE_ARTIFACT_TOKEN 版本更新token
+      PROJECT_NAME: GenshinImpactNaturalLaw
+      PROJECT_BUILD_NAME: 天理启动器
       Qt_Dir_Static : D:/a/${{env.PROJECT_NAME}}/${{env.PROJECT_NAME}}/deps_qt/5.15.7/
       ProjectName: ${{env.PROJECT_NAME}}
     steps:
