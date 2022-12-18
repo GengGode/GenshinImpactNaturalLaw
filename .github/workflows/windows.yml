@@ -10,10 +10,13 @@ env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
 
-  # Configuration type to build.
-  # You can convert this to a build matrix if you need coverage of multiple configuration types.
-  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  # 需要两个机密：
+  # 1. ALICLOUD_CLI_UPADTE_CONFIGYAML 文件上传配置
+  # 2. UPDATE_ARTIFACT_TOKEN 版本更新token
+  
   BUILD_CONFIGURATION: Release
+  PROJECT_NAME: GenshinImpactNaturalLaw
+  PROJECT_BUILD_NAME: 天理启动器
 
 permissions:
   contents: read
@@ -22,8 +25,8 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-      Qt_Dir_Static : D:/a/GenshinImpactNaturalLaw/GenshinImpactNaturalLaw/deps_qt/5.15.7/
-      ProjectName: GenshinImpactNaturalLaw
+      Qt_Dir_Static : D:/a/${{env.PROJECT_NAME}}/${{env.PROJECT_NAME}}/deps_qt/5.15.7/
+      ProjectName: ${{env.PROJECT_NAME}}
     steps:
     - uses: actions/checkout@v3
     - name: Add Deps_Qt
@@ -34,10 +37,10 @@ jobs:
         Copy-Item -Path "openssl" -Destination "C:\" -Recurse
         cd ..
         dir
-        copy deps_qt/QtMsBuild.7z GenshinImpactNaturalLaw/
-        copy deps_qt/7z.exe GenshinImpactNaturalLaw/
-        copy deps_qt/7z.dll GenshinImpactNaturalLaw/
-        cd GenshinImpactNaturalLaw
+        copy deps_qt/QtMsBuild.7z ${{env.PROJECT_NAME}}/
+        copy deps_qt/7z.exe ${{env.PROJECT_NAME}}/
+        copy deps_qt/7z.dll ${{env.PROJECT_NAME}}/
+        cd ${{env.PROJECT_NAME}}
         7z.exe x QtMsBuild.7z   
         
     - name: Add MSBuild to PATH
@@ -46,10 +49,55 @@ jobs:
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      
+    - name: Test Version
+      run: |
+        .\x64\${{env.BUILD_CONFIGURATION}}\${{env.PROJECT_BUILD_NAME}}.exe -V
+        .\x64\${{env.BUILD_CONFIGURATION}}\${{env.PROJECT_BUILD_NAME}}.exe -v | out-file version.ver
+        .\x64\${{env.BUILD_CONFIGURATION}}\${{env.PROJECT_BUILD_NAME}}.exe -V | out-file build_version.ver
+    - name: Make Zip Pkg
+      run: |
+        $version = Get-Content version.ver
+        echo (Get-Content build_version.ver)
+        .\${{env.PROJECT_NAME}}\7z.exe a -tZip ${{env.PROJECT_BUILD_NAME}}-$version.zip D:\a\${{env.PROJECT_NAME}}\${{env.PROJECT_NAME}}/x64\${{env.BUILD_CONFIGURATION}}\${{env.PROJECT_BUILD_NAME}}.exe
+        dir
+        (Get-FileHash -Path ${{env.PROJECT_BUILD_NAME}}-$version.zip -Algorithm MD5).Hash | out-file md5.hash
+        echo (Get-Content md5.hash)
+        
+    - name: Upload To Download site
+      run: |
+        $version = Get-Content version.ver
+        curl -L "https://github.com/aoaostar/alidrive-uploader/releases/download/v2.2.1/alidrive_uploader_v2.2.1_windows_amd64.zip" -o alidrive.zip 
+        tar -xf alidrive.zip --strip-components 1
+        dir
+        del example.config.yaml
+        Out-File -FilePath config.yaml -InputObject "${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}"
+        .\alidrive.exe .\${{env.PROJECT_BUILD_NAME}}-$version.zip / ${{env.PROJECT_NAME}}
+        
+    - name: Update Api Version
+      run: |
+        $version = Get-Content version.ver
+        $buildversion = Get-Content build_version.ver
+        $md5 = Get-Content md5.hash
+        $commitLog = git log -1 --pretty=%B
+        
+        $token="${{secrets.UPDATE_ARTIFACT_TOKEN}}"
+        $url='http://update.api.weixitianli.com/${{env.PROJECT_NAME}}/Version?token='+$token
+        $body='{"version": "'+$version+'", "description": "' + $buildVersion + '", "downloadUrl": "http://download.weixitianli.com/d/TianLiUpdateService/' + '${{env.PROJECT_NAME}}' + '/' + '${{env.PROJECT_BUILD_NAME}}' + '-' + $version + '.zip", "hash": "' + $md5 + '", "updateLog": "' + $commitLog + '"}'
+        echo $url
+        echo $body
+        Invoke-RestMethod -Method Post -Uri $url -Body $body -ContentType 'application/json'
+        
+    - name: Copy Pkg
+      run: |
+        mkdir  D:\a\${{env.PROJECT_NAME}}\${{env.PROJECT_NAME}}/artifact
+        copy  D:\a\${{env.PROJECT_NAME}}\${{env.PROJECT_NAME}}/x64/${{env.BUILD_CONFIGURATION}}/*.exe  D:\a\${{env.PROJECT_NAME}}\${{env.PROJECT_NAME}}/artifact
+        cd D:\a\${{env.PROJECT_NAME}}\${{env.PROJECT_NAME}}/artifact
+        dir
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
-        name: 天理启动器
-        path: D:\a\GenshinImpactNaturalLaw\GenshinImpactNaturalLaw/x64/${{env.BUILD_CONFIGURATION}}/*.exe
+        name: ${{env.PROJECT_BUILD_NAME}}
+        path: D:\a\${{env.PROJECT_NAME}}\${{env.PROJECT_NAME}}/x64/${{env.BUILD_CONFIGURATION}}/*.exe
         if-no-files-found: 'warn'

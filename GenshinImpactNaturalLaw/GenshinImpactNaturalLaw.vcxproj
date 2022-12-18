@@ -73,15 +73,15 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <TargetName>原神天理</TargetName>
+    <TargetName>天理启动器</TargetName>
     <IncludePath>D:\Qt\5.14.2\msvc2017_64\include;D:\Qt\5.14.2\msvc2017_64\include\QtCore;D:\Qt\5.14.2\msvc2017_64\include\QtWidgets;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <TargetName>天理系统</TargetName>
+    <TargetName>天理启动器</TargetName>
     <IncludePath>D:\Qt\5.14.2\msvc2017_64\include;D:\Qt\5.14.2\msvc2017_64\include\QtCore;D:\Qt\5.14.2\msvc2017_64\include\QtWidgets;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelDyn|x64'">
-    <TargetName>天理系统</TargetName>
+    <TargetName>天理启动器</TargetName>
     <IncludePath>D:\Qt\5.14.2\msvc2017_64\include;D:\Qt\5.14.2\msvc2017_64\include\QtCore;D:\Qt\5.14.2\msvc2017_64\include\QtWidgets;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
