@@ -31,6 +31,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Add Deps_Qt
       run: |
+        echo PROJECT_NAME: ${PROJECT_NAME}
+        echo PROJECT_NAME: ${env.PROJECT_NAME}
         git clone http://github.com/GenshinTianLiBattle/deps_qt.git
         cd deps_qt
         .\unzip.bat
@@ -38,8 +40,6 @@ jobs:
         dir
         cd ..
         dir
-        echo PROJECT_NAME: ${PROJECT_NAME}
-        echo PROJECT_NAME: $PROJECT_NAME
         copy deps_qt/QtMsBuild.7z ${PROJECT_NAME}/
         copy deps_qt/7z.exe ${PROJECT_NAME}/
         copy deps_qt/7z.dll ${PROJECT_NAME}/
