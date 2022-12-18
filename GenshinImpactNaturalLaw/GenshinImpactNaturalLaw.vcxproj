@@ -40,7 +40,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>5.14.2_msvc2017_64</QtInstall>
+    <QtInstall>static_5.15.7</QtInstall>
     <QtModules>core;gui;multimedia;network;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
@@ -87,22 +87,51 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>3rdpart\cpr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+      <AdditionalLibraryDirectories>3rdpart\cpr\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>version\update_version.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+      <AdditionalLibraryDirectories>3rdpart\cpr\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile />
+    <PreBuildEvent>
+      <Command>version\update_version.bat</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <ClCompile>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>3rdpart\cpr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelDyn|x64'">
     <Link>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+      <AdditionalLibraryDirectories>3rdpart\cpr\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile />
+    <PreBuildEvent>
+      <Command>version\update_version.bat</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <ClCompile>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>3rdpart\cpr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -110,7 +139,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,13 +173,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DownloadManager.cpp" />
     <ClCompile Include="ModulesManager.cpp" />
     <ClCompile Include="QtWidgetsMessageBox.cpp" />
     <ClCompile Include="QtWidgetsSetting.cpp" />
     <ClCompile Include="SettingData.cpp" />
     <ClCompile Include="SingleApplication.cpp" />
-    <ClCompile Include="UpdataModule.cpp" />
     <ClCompile Include="VersionNumber.cpp" />
     <QtRcc Include="GenshinImpactNaturalLaw.qrc" />
     <QtRcc Include="QtWidgetsMessageBox.qrc" />
@@ -168,12 +195,14 @@
     <QtMoc Include="QtWidgetsSetting.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3rdpart\cpr\include\cpr\cpr.h" />
+    <ClInclude Include="define\Api.h" />
+    <ClInclude Include="define\ProjectInfo.h" />
     <ClInclude Include="ModulesManager.h" />
+    <ClInclude Include="version\Version.h" />
     <QtMoc Include="SingleApplication.h" />
     <ClInclude Include="VersionNumber.h" />
-    <QtMoc Include="UpdataModule.h" />
     <QtMoc Include="QtWidgetsMessageBox.h" />
-    <ClInclude Include="DownloadManager.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SettingData.h" />
   </ItemGroup>
@@ -185,6 +214,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="GenshinImpactNaturalLaw.pro" />
+    <None Include="version\update_version.bat" />
+    <None Include="version\version.ver" />
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="genshinimpactnaturallaw_zh.ts" />

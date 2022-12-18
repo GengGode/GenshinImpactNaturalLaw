@@ -21,6 +21,18 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="version">
+      <UniqueIdentifier>{be3a97ee-f551-4f87-9d5d-b94853d35682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdpart">
+      <UniqueIdentifier>{ab4be5dc-2905-403f-a082-b3f531cacfe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdpart\cpr">
+      <UniqueIdentifier>{59889dd1-812f-49af-97cc-1e9b78790110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="define">
+      <UniqueIdentifier>{11f9cd72-9646-4469-a4ad-e1c816126ce6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="GenshinImpactNaturalLaw.qrc">
@@ -55,12 +67,6 @@
     <ClCompile Include="QtWidgetsMessageBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DownloadManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UpdataModule.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VersionNumber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -76,9 +82,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="QtWidgetsMessageBox.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="UpdataModule.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SingleApplication.h">
@@ -100,14 +103,23 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DownloadManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VersionNumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ModulesManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="version\Version.h">
+      <Filter>version</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdpart\cpr\include\cpr\cpr.h">
+      <Filter>3rdpart\cpr</Filter>
+    </ClInclude>
+    <ClInclude Include="define\ProjectInfo.h">
+      <Filter>define</Filter>
+    </ClInclude>
+    <ClInclude Include="define\Api.h">
+      <Filter>define</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +134,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="GenshinImpactNaturalLaw.pro" />
+    <None Include="version\update_version.bat">
+      <Filter>version</Filter>
+    </None>
+    <None Include="version\version.ver">
+      <Filter>version</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="genshinimpactnaturallaw_zh.ts">

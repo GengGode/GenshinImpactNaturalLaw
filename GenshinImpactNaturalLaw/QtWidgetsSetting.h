@@ -14,8 +14,8 @@
 #include "ui_QtWidgetsSetting.h"
 #include "QtWidgetsMessageBox.h"
 #include "SettingData.h"
-#include "UpdataModule.h"
 #include "ModulesManager.h"
+#include "VersionNumber.h"
 
 class QtWidgetsSetting : public QWidget
 {
@@ -31,7 +31,7 @@ private:
 public:
 	SettingData *setting = nullptr;
 	ModulesManager *modules = nullptr;
-	UpdataModule *updata;
+	std::string net_version = "";
 private:
 	QPoint m_Press;
 	QPoint m_Move;

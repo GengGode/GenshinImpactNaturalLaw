@@ -18,6 +18,7 @@
 #include "QtWidgetsSetting.h"
 #include "SettingData.h"
 #include "ModulesManager.h"
+#include "version/Version.h"
 
 class GenshinImpactNaturalLaw : public QMainWindow
 {

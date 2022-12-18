@@ -13,6 +13,8 @@ GenshinImpactNaturalLaw::GenshinImpactNaturalLaw(QWidget *parent)
 	//this->show();
 	//this->activateWindow();
 
+	ui.TitleLabelVersion->setText(tl::launcher::version::version);
+
 	Tray = new QSystemTrayIcon(this);
 	Tray->setIcon(QIcon(QPixmap(":/icon/resource/icon/ICON.png")));
 	Tray->setToolTip(tr("Str_TianLi"));//ÌìÀí
@@ -271,7 +273,7 @@ void GenshinImpactNaturalLaw::StartGame()
 	
 	
 	
-	if ((int)(res)>32)
+	if ((long long)(res)>32)
 	{
 		DWORD err = GetLastError();
 		if (err != 0)

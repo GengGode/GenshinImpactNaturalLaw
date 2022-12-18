@@ -1,5 +1,21 @@
 #include "QtWidgetsSetting.h"
 //#pragma execution_character_set("utf-8")
+#include "version/Version.h"
+#include "define/Api.h"
+#include <cpr/cpr.h>
+#ifdef _DEBUG
+#pragma comment(lib, "3rdpart/cpr/lib/cprd.lib")
+#pragma comment(lib, "3rdpart/cpr/lib/libcurld.lib")							
+#pragma comment(lib, "3rdpart/cpr/lib/zlibd.lib")
+#pragma comment(lib, "3rdpart/cpr/lib/nghttp2d.lib")
+#else
+#pragma comment(lib, "3rdpart/cpr/lib/cpr.lib")
+#pragma comment(lib, "3rdpart/cpr/lib/libcurl.lib")							
+#pragma comment(lib, "3rdpart/cpr/lib/zlib.lib")
+#pragma comment(lib, "3rdpart/cpr/lib/nghttp2.lib")
+#endif
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "crypt32.lib")
 
 QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 	: QWidget(parent)
@@ -31,18 +47,9 @@ QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 	connect(ui.pushButton_Check_6, SIGNAL(clicked()), this, SLOT(CheckOptions_UpdataGameLauncher()));
 	connect(ui.pushButton_Check_7, SIGNAL(clicked()), this, SLOT(CheckOptions_UpdataGame()));
 
-	QString myVersionFilePath = QApplication::applicationDirPath() + "/version.tag";
-
-	QFile myVersionFile(myVersionFilePath);
-	if (!myVersionFile.open(QIODevice::ReadOnly | QIODevice::Text))
-	{
-	}
-	else
-	{
-		QString line = myVersionFile.readLine();
-		myVersion = VersionNumber(line);
-		ui.label_Label_5->setText(KeyString1 + myVersion);
-	}
+	
+	ui.label_Label_5->setText(KeyString1 + tl::launcher::version::build_version);
+	
 }
 
 QtWidgetsSetting::~QtWidgetsSetting()
@@ -496,12 +503,15 @@ void QtWidgetsSetting::CheckOptions_RefreshModule()
 
 void QtWidgetsSetting::CheckOptions_UpdataLauncher()
 {
-	updata = new UpdataModule();
-	updata->setData(QUrl(QString("https://github.com/GengGode/GenshinImpactNaturalLaw/releases/latest/download/version.tag")));
-	//updata.setData(QUrl("https://github.com/GengGode/GenshinImpact_AutoTrack_DLL/releases/latest/download/cvAutoTrack.7z"), "123");
-	connect(updata, &UpdataModule::finish, this, &QtWidgetsSetting::UpdataLauncher_GetUrlVersion);
-
-	updata->getFile();
+	cpr::Session session;
+	session.SetVerifySsl(false);
+	
+	session.SetUrl(tl::launcher::api::version_url);
+	auto r = session.Get();
+	if (r.status_code ==200)
+	{
+		net_version = r.text;
+	}
 }
 
 void QtWidgetsSetting::CheckOptions_UpdataGameLauncher()
