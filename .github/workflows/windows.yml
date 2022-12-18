@@ -73,7 +73,7 @@ jobs:
         dir
         del example.config.yaml
         Out-File -FilePath config.yaml -InputObject "${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}"
-        .\alidrive.exe .\天理启动器-$version.zip / GenshinImpactNaturalLaw
+        .\alidrive.exe .\天理启动器-$version.zip /GenshinImpactNaturalLaw
         
     - name: Update Api Version
       run: |
