@@ -39,6 +39,7 @@ jobs:
         cd ..
         dir
         echo PROJECT_NAME: ${PROJECT_NAME}
+        echo PROJECT_NAME: $PROJECT_NAME
         copy deps_qt/QtMsBuild.7z ${PROJECT_NAME}/
         copy deps_qt/7z.exe ${PROJECT_NAME}/
         copy deps_qt/7z.dll ${PROJECT_NAME}/
