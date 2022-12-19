@@ -320,7 +320,8 @@ void QtWidgetsSetting::ShowMessageBox()
 	if (WidgetsMessageBox == nullptr)
 	{
 		WidgetsMessageBox = new QtWidgetsMessageBox();
-		connect(WidgetsMessageBox, SIGNAL(SendCloseSelfSignalToSettingWidgets()), this, SLOT(ReceiveCloseSelfSignalFromWidgetsMessageBox()));
+		connect(WidgetsMessageBox, &QtWidgetsMessageBox::signal_cancel, this, &QtWidgetsSetting::ReceiveCloseSelfSignalFromWidgetsMessageBox);
+		connect(WidgetsMessageBox,&QtWidgetsMessageBox::signal_ok, this, &QtWidgetsSetting::ReceiveCloseSelfSignalFromWidgetsMessageBox);
 
 		WidgetsMessageBox->setWindowModality(Qt::ApplicationModal);
 		WidgetsMessageBox->move(this->x() + 145, this->y() + 85);
