@@ -17,6 +17,8 @@
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "crypt32.lib")
 
+#include "QtWidgetsMessageBox.h"
+
 QtWidgetsSetting::QtWidgetsSetting(QWidget *parent)
 	: QWidget(parent)
 {
@@ -511,6 +513,50 @@ void QtWidgetsSetting::CheckOptions_UpdataLauncher()
 	if (r.status_code ==200)
 	{
 		net_version = r.text;
+	}
+	if (VersionNumber(tl::launcher::version::version) < VersionNumber(net_version.c_str()))
+	{
+		// 检测到存在更新
+		static QtWidgetsMessageBox* message_box = nullptr;
+
+		if (MainMaskLabel == nullptr)
+		{
+			MainMaskLabel = new QLabel(this);
+			MainMaskLabel->setText("");
+			MainMaskLabel->setGeometry(QRect(0, 0, 820, 524));
+			MainMaskLabel->setStyleSheet("background-color:rgba(0, 0, 0, 120);");
+			MainMaskLabel->show();
+		}
+		else
+		{
+			MainMaskLabel->show();
+		}
+		if (message_box == nullptr)
+		{
+			message_box = new QtWidgetsMessageBox(this);
+			message_box->setWindowModality(Qt::ApplicationModal);
+			connect(message_box, &QtWidgetsMessageBox::signal_cancel, [=]() {
+				//qDebug() << "kais gengxin";
+				MainMaskLabel->hide();
+			//MainMaskLabel->deleteLater();
+				});
+			connect(message_box, &QtWidgetsMessageBox::signal_ok, [=]() {
+				//qDebug() << "kais gengxin";
+				MainMaskLabel->hide();
+				//MainMaskLabel->deleteLater();
+				});
+			message_box->setMessage(tr("Str_SelectIsUpdateNow"));
+
+			message_box->move( 145, 85);
+			message_box->show();
+		}
+		else
+		{
+			message_box->setWindowModality(Qt::ApplicationModal);
+			message_box->move(this->x() + 145, this->y() + 85);
+			message_box->show();
+		}
+
 	}
 }
 

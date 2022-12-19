@@ -19,7 +19,7 @@
   <widget class="QPushButton" name="pushButton_OK">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>271</x>
      <y>273</y>
      <width>190</width>
      <height>48</height>
@@ -127,10 +127,44 @@ background-image:url(:/BackgroundImage/resource/QMessageBox/bg.png);
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_Cancel">
+   <property name="geometry">
+    <rect>
+     <x>69</x>
+     <y>273</y>
+     <width>190</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color:rgb(255, 255, 255);
+color:rgb(220, 188, 96);
+border:1px solid rgb(204, 204, 204);
+border-radius:4px;
+}
+QPushButton:hover {
+background-color:rgb(251, 248, 239);
+}
+QPushButton:pressed {
+background-color:rgb(236, 233, 224);
+}</string>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
   <zorder>BackgrouundImageRect</zorder>
   <zorder>pushButton_OK</zorder>
   <zorder>label_Title</zorder>
   <zorder>label_Message</zorder>
+  <zorder>pushButton_Cancel</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

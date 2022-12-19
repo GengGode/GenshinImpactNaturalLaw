@@ -296,6 +296,11 @@
         <source>Str_SelectGILauncherPath</source>
         <translation>选择原神启动器所在目录</translation>
     </message>
+	<message>
+		<location filename="QtWidgetsSetting.cpp" line="548"/>
+		<source>Str_SelectIsUpdateNow</source>
+		<translation>立即进行更新</translation>
+	</message>
 </context>
 <context>
     <name>UpdataModule</name>

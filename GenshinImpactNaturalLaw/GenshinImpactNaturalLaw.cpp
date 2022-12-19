@@ -86,24 +86,6 @@ void GenshinImpactNaturalLaw::mouseMoveEvent(QMouseEvent *event)
 
 void GenshinImpactNaturalLaw::NewWidgetsSetting()
 {
-	if (WidgetsSetting == nullptr)
-	{
-		WidgetsSetting = new QtWidgetsSetting();
-		connect(WidgetsSetting, SIGNAL(SendSettingToMainWidgets()), this, SLOT(ReceiveSettingFromWidgetsSetting()));
-		connect(WidgetsSetting, SIGNAL(SendCloseSelfSignalToMainWidgets()), this, SLOT(ReceiveCloseSelfSignalFromWidgetsSetting()));
-		connect(WidgetsSetting, SIGNAL(SendCloseAllSignalToMainWidgets()), this, SLOT(close()));
-		WidgetsSetting->SetSetting(&setting);
-		WidgetsSetting->SetModules(&modules);
-
-		WidgetsSetting->setWindowModality(Qt::ApplicationModal);
-		WidgetsSetting->move(this->x()+240, this->y()+113);
-		WidgetsSetting->show();
-	}
-	else
-	{
-		WidgetsSetting->move(this->x() + 240, this->y() + 113);
-		WidgetsSetting->show();
-	}
 	if (MainMaskLabel == nullptr)
 	{
 		MainMaskLabel = new QLabel(this);
@@ -116,6 +98,24 @@ void GenshinImpactNaturalLaw::NewWidgetsSetting()
 	else
 	{
 		MainMaskLabel->show();
+	}
+	if (WidgetsSetting == nullptr)
+	{
+		WidgetsSetting = new QtWidgetsSetting(this);
+		connect(WidgetsSetting, SIGNAL(SendSettingToMainWidgets()), this, SLOT(ReceiveSettingFromWidgetsSetting()));
+		connect(WidgetsSetting, SIGNAL(SendCloseSelfSignalToMainWidgets()), this, SLOT(ReceiveCloseSelfSignalFromWidgetsSetting()));
+		connect(WidgetsSetting, SIGNAL(SendCloseAllSignalToMainWidgets()), this, SLOT(close()));
+		WidgetsSetting->SetSetting(&setting);
+		WidgetsSetting->SetModules(&modules);
+
+		WidgetsSetting->setWindowModality(Qt::ApplicationModal);
+		WidgetsSetting->move(240, 113);
+		WidgetsSetting->show();
+	}
+	else
+	{
+		WidgetsSetting->move(240, 113);
+		WidgetsSetting->show();
 	}
 }
 void GenshinImpactNaturalLaw::uiConnectButton()

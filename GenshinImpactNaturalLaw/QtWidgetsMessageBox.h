@@ -10,11 +10,15 @@ public:
 	QtWidgetsMessageBox(QWidget *parent = Q_NULLPTR);
 	~QtWidgetsMessageBox();
 
+public:
+	void setMessage(QString message);
 private:
 	Ui::QtWidgetsMessageBox ui;
 
 private slots:
-	void CloseSelf();
+	void cancel_and_close();
+	void ok_and_close();
 signals:
-	void SendCloseSelfSignalToSettingWidgets();
+	void signal_cancel();
+	void signal_ok();
 };
